@@ -1,0 +1,60 @@
+# Project-specific Git configuration
+.env.local
+.env.*.local
+
+# PHP Configuration  
+config.local.php
+.htaccess
+
+# Database backups
+database/backups/
+*.sql
+
+# Logs
+logs/
+*.log
+
+# Uploads and temporary files
+front/uploads/
+back/uploads/
+temp/
+tmp/
+
+# IDE and Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Node modules (if using build tools)
+node_modules/
+package-lock.json
+
+# OS files
+.DS_Store
+.gitkeep
+
+# Environment files
+.env
+.env.example
+
+# Compiled or minified files (if applicable)
+dist/
+build/
+*.min.js
+*.min.css
+
+# Testing
+tests/coverage/
+.phpunit.result.cache
+
+# Cache files
+cache/
+*.cache
+
+# Project-specific
+.todo
+notes.md
