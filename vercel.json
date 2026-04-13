@@ -1,7 +1,6 @@
 {
-  "version": 2,
-  "buildCommand": "echo 'Static site ready'",
-  "outputDirectory": "front"
+  "version": 2
 }
+
 
 

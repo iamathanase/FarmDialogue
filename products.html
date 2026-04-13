@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products - FarmDialogue Ghana</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .products-container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+        
+        .page-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .page-header h1 {
+            color: #2c3e50;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .filters {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .filter-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #2c3e50;
+        }
+        
+        .filter-group input,
+        .filter-group select {
+            width: 100%;
+            padding: 0.6rem;
+            border: 1px solid #ecf0f1;
+            border-radius: 5px;
+            font-size: 0.9rem;
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .product-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .product-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #2ecc71, #3498db);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+        }
+        
+        .product-info {
+            padding: 1.5rem;
+        }
+        
+        .product-name {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+        
+        .product-category {
+            font-size: 0.85rem;
+            color: #2ecc71;
+            margin-bottom: 0.5rem;
+        }
+        
+        .product-description {
+            font-size: 0.9rem;
+            color: #95a5a6;
+            margin-bottom: 1rem;
+            height: 40px;
+            overflow: hidden;
+        }
+        
+        .product-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid #ecf0f1;
+            padding-top: 1rem;
+        }
+        
+        .product-price {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #2ecc71;
+        }
+        
+        .btn-add-cart {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .btn-add-cart:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="navbar-logo">
+                <h1>🌾 FarmDialogue Ghana</h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="products.html" class="nav-link active">Products</a></li>
+                <li><a href="learning.html" class="nav-link">Learn</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="login.html" class="nav-link btn-login">Login</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Products Section -->
+    <div class="products-container">
+        <div class="page-header">
+            <h1>Browse Products</h1>
+            <p>Discover fresh produce, seeds, and equipment from our farmers and vendors</p>
+        </div>
+
+        <!-- Filter Section -->
+        <div class="filters">
+            <div class="filter-group">
+                <label for="search">Search Products</label>
+                <input type="text" id="search" placeholder="Search items...">
+            </div>
+            <div class="filter-group">
+                <label for="category">Category</label>
+                <select id="category">
+                    <option value="">All Categories</option>
+                    <option value="produce">Fresh Produce</option>
+                    <option value="seeds">Seeds & Plants</option>
+                    <option value="equipment">Equipment</option>
+                    <option value="fertilizer">Fertilizers</option>
+                    <option value="tools">Tools</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label for="priceRange">Price Range</label>
+                <select id="priceRange">
+                    <option value="">All Prices</option>
+                    <option value="0-100">$0 - $100</option>
+                    <option value="100-500">$100 - $500</option>
+                    <option value="500-1000">$500 - $1000</option>
+                    <option value="1000+">$1000+</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label for="seller">Seller Type</label>
+                <select id="seller">
+                    <option value="">All Sellers</option>
+                    <option value="farmer">Farmers</option>
+                    <option value="vendor">Vendors</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <button class="btn btn-primary" style="margin-top: 1.8rem;">Apply Filters</button>
+            </div>
+        </div>
+
+        <!-- Products Grid -->
+        <div class="products-grid" id="productsGrid">
+            <!-- Product cards will be loaded here by JavaScript -->
+            <div class="product-card">
+                <div class="product-image">🥕</div>
+                <div class="product-info">
+                    <div class="product-category">Fresh Produce</div>
+                    <div class="product-name">Fresh Organic Carrots</div>
+                    <div class="product-description">Premium quality organic carrots, freshly harvested</div>
+                    <div class="product-footer">
+                        <span class="product-price">$5.99</span>
+                        <button class="btn-add-cart">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">🍅</div>
+                <div class="product-info">
+                    <div class="product-category">Fresh Produce</div>
+                    <div class="product-name">Tomatoes Bundle</div>
+                    <div class="product-description">Ripe, juicy tomatoes, perfect for cooking</div>
+                    <div class="product-footer">
+                        <span class="product-price">$8.49</span>
+                        <button class="btn-add-cart">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">🌱</div>
+                <div class="product-info">
+                    <div class="product-category">Seeds & Plants</div>
+                    <div class="product-name">Vegetable Seeds Pack</div>
+                    <div class="product-description">Assorted vegetable seeds for home gardening</div>
+                    <div class="product-footer">
+                        <span class="product-price">$12.99</span>
+                        <button class="btn-add-cart">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">🔧</div>
+                <div class="product-info">
+                    <div class="product-category">Tools</div>
+                    <div class="product-name">Garden Tool Set</div>
+                    <div class="product-description">5-piece essential garden tool set</div>
+                    <div class="product-footer">
+                        <span class="product-price">$29.99</span>
+                        <button class="btn-add-cart">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <div class="footer-brand">
+                    <h3>🌾 FarmDialogue Ghana</h3>
+                    <p>Connecting farmers, gardeners, vendors, and customers across Ghana. Building a stronger agricultural community through direct trade and knowledge sharing.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Company</h4>
+                    <a href="index.html">Home</a>
+                    <a href="about.html">About Us</a>
+                    <a href="learning.html">Learning Hub</a>
+                    <a href="products.html">Products</a>
+                </div>
+                <div class="footer-links">
+                    <h4>Support</h4>
+                    <a href="#">Help Center</a>
+                    <a href="#">Contact Us</a>
+                    <a href="#">FAQ</a>
+                    <a href="#">Feedback</a>
+                </div>
+                <div class="footer-links">
+                    <h4>Legal</h4>
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Cookie Policy</a>
+                    <a href="#">Security</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 FarmDialogue Ghana. All rights reserved. | Building Ghana's agricultural future, one connection at a time.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

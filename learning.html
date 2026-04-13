@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Hub - FarmDialogue Ghana</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .learning-container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+        
+        .page-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .page-header h1 {
+            color: #2c3e50;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .learning-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .resource-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .resource-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .resource-header {
+            background: linear-gradient(135deg, #2ecc71, #3498db);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            font-size: 2rem;
+        }
+        
+        .resource-type {
+            display: inline-block;
+            background: #e74c3c;
+            color: white;
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .resource-type.article {
+            background: #3498db;
+        }
+        
+        .resource-type.video {
+            background: #e74c3c;
+        }
+        
+        .resource-type.tutorial {
+            background: #2ecc71;
+        }
+        
+        .resource-type.guide {
+            background: #f39c12;
+        }
+        
+        .resource-content {
+            padding: 1.5rem;
+        }
+        
+        .resource-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 0.8rem;
+        }
+        
+        .resource-description {
+            color: #95a5a6;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+        
+        .resource-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid #ecf0f1;
+            padding-top: 1rem;
+            font-size: 0.85rem;
+            color: #95a5a6;
+        }
+        
+        .btn-learn {
+            background-color: #2ecc71;
+            color: white;
+            border: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .btn-learn:hover {
+            background-color: #27ae60;
+        }
+        
+        .categories {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .category-btn {
+            padding: 0.6rem 1.2rem;
+            border: 2px solid #ecf0f1;
+            background: white;
+            color: #2c3e50;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .category-btn.active {
+            background: #2ecc71;
+            color: white;
+            border-color: #2ecc71;
+        }
+        
+        .category-btn:hover {
+            border-color: #2ecc71;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="navbar-logo">
+                <h1>🌾 FarmDialogue Ghana</h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="products.html" class="nav-link">Products</a></li>
+                <li><a href="learning.html" class="nav-link active">Learn</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="login.html" class="nav-link btn-login">Login</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Learning Hub Section -->
+    <div class="learning-container">
+        <div class="page-header">
+            <h1>📚 Learning Hub</h1>
+            <p>Master the art of farming and gardening with our comprehensive resources</p>
+        </div>
+
+        <!-- Category Filter -->
+        <div class="categories">
+            <button class="category-btn active" onclick="filterCategory('all')">All</button>
+            <button class="category-btn" onclick="filterCategory('article')">Articles</button>
+            <button class="category-btn" onclick="filterCategory('tutorial')">Tutorials</button>
+            <button class="category-btn" onclick="filterCategory('video')">Videos</button>
+            <button class="category-btn" onclick="filterCategory('guide')">Guides</button>
+        </div>
+
+        <!-- Learning Resources Grid -->
+        <div class="learning-grid" id="learningGrid">
+            <!-- Articles -->
+            <div class="resource-card" data-category="article">
+                <div class="resource-header">📰</div>
+                <div class="resource-content">
+                    <span class="resource-type article">Article</span>
+                    <div class="resource-title">Getting Started with Organic Farming</div>
+                    <div class="resource-description">Learn the fundamentals of organic farming practices, soil management, and sustainable agriculture techniques.</div>
+                    <div class="resource-meta">
+                        <span>5 min read</span>
+                        <a href="#" class="btn-learn">Read More</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tutorials -->
+            <div class="resource-card" data-category="tutorial">
+                <div class="resource-header">🎓</div>
+                <div class="resource-content">
+                    <span class="resource-type tutorial">Tutorial</span>
+                    <div class="resource-title">How to Build a Vegetable Garden</div>
+                    <div class="resource-description">Step-by-step guide to creating your first vegetable garden, from planning to harvesting your first crop.</div>
+                    <div class="resource-meta">
+                        <span>10 min</span>
+                        <a href="#" class="btn-learn">Start Guide</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Videos -->
+            <div class="resource-card" data-category="video">
+                <div class="resource-header">🎬</div>
+                <div class="resource-content">
+                    <span class="resource-type video">Video</span>
+                    <div class="resource-title">Composting 101: Waste to Wealth</div>
+                    <div class="resource-description">Watch how to create compost from kitchen and garden waste to enrich your soil naturally.</div>
+                    <div class="resource-meta">
+                        <span>15 min</span>
+                        <a href="#" class="btn-learn">Watch Video</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Guides -->
+            <div class="resource-card" data-category="guide">
+                <div class="resource-header">📖</div>
+                <div class="resource-content">
+                    <span class="resource-type guide">Guide</span>
+                    <div class="resource-title">Pest Management Without Chemicals</div>
+                    <div class="resource-description">Comprehensive guide to natural and organic pest control methods for your garden.</div>
+                    <div class="resource-meta">
+                        <span>Complete</span>
+                        <a href="#" class="btn-learn">Explore</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- More Articles -->
+            <div class="resource-card" data-category="article">
+                <div class="resource-header">📰</div>
+                <div class="resource-content">
+                    <span class="resource-type article">Article</span>
+                    <div class="resource-title">Understanding Soil pH and Nutrients</div>
+                    <div class="resource-description">Deep dive into soil testing, pH levels, and nutrient management for optimal plant growth.</div>
+                    <div class="resource-meta">
+                        <span>6 min read</span>
+                        <a href="#" class="btn-learn">Read More</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- More Tutorials -->
+            <div class="resource-card" data-category="tutorial">
+                <div class="resource-header">🎓</div>
+                <div class="resource-content">
+                    <span class="resource-type tutorial">Tutorial</span>
+                    <div class="resource-title">Greenhouse Gardening Basics</div>
+                    <div class="resource-description">Learn how to set up and maintain a greenhouse for year-round gardening success.</div>
+                    <div class="resource-meta">
+                        <span>12 min</span>
+                        <a href="#" class="btn-learn">Start Guide</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <div class="footer-brand">
+                    <h3>🌾 FarmDialogue Ghana</h3>
+                    <p>Connecting farmers, gardeners, vendors, and customers across Ghana. Building a stronger agricultural community through direct trade and knowledge sharing.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Company</h4>
+                    <a href="index.html">Home</a>
+                    <a href="about.html">About Us</a>
+                    <a href="learning.html">Learning Hub</a>
+                    <a href="products.html">Products</a>
+                </div>
+                <div class="footer-links">
+                    <h4>Support</h4>
+                    <a href="#">Help Center</a>
+                    <a href="#">Contact Us</a>
+                    <a href="#">FAQ</a>
+                    <a href="#">Feedback</a>
+                </div>
+                <div class="footer-links">
+                    <h4>Legal</h4>
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Cookie Policy</a>
+                    <a href="#">Security</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 FarmDialogue Ghana. All rights reserved. | Building Ghana's agricultural future, one connection at a time.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        function filterCategory(category) {
+            const cards = document.querySelectorAll('.resource-card');
+            const buttons = document.querySelectorAll('.category-btn');
+            
+            // Update active button
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            // Filter cards
+            cards.forEach(card => {
+                if (category === 'all') {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = card.dataset.category === category ? 'block' : 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>
