@@ -37,7 +37,7 @@ body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   line-height: 1.6;
   color: var(--text-dark);
-  background-color: #ffffff;
+  background: linear-gradient(135deg, #f5f9f5 0%, #e8f2e8 100%);
   overflow-x: hidden;
 }
 
@@ -160,9 +160,9 @@ button {
   right: 0;
   z-index: 1000;
   backdrop-filter: blur(10px);
-  background: rgba(255, 255, 255, 0.95);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(135deg, rgba(29, 124, 58, 0.95) 0%, rgba(34, 139, 34, 0.95) 100%);
+  border-bottom: 2px solid #1d7c3a;
+  box-shadow: 0 4px 30px rgba(29, 124, 58, 0.4);
   animation: slideInDown 0.5s ease-out;
   transition: var(--transition);
 }
@@ -190,12 +190,10 @@ button {
 .navbar-logo h1 {
   font-size: 1.8rem;
   font-weight: 700;
-  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #ffffff;
   letter-spacing: -0.5px;
   transition: var(--transition-slow);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .navbar-logo h1:hover {
@@ -212,7 +210,7 @@ button {
 .nav-link {
   position: relative;
   font-weight: 500;
-  color: var(--text-dark);
+  color: #ffffff;
   padding: 0.5rem 0;
   transition: var(--transition);
 }
@@ -224,7 +222,7 @@ button {
   left: 0;
   width: 0;
   height: 2px;
-  background: linear-gradient(90deg, var(--primary), var(--primary-light));
+  background: #f39c12;
   transition: width 0.3s ease;
 }
 
@@ -234,12 +232,12 @@ button {
 }
 
 .nav-link:hover {
-  color: var(--primary);
+  color: #f39c12;
   transform: translateY(-2px);
 }
 
 .nav-link.active {
-  color: var(--primary);
+  color: #f39c12;
   font-weight: 600;
 }
 
@@ -417,26 +415,27 @@ button {
 }
 
 .btn-primary {
-  background: white;
-  color: var(--primary);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%);
+  color: white;
+  box-shadow: 0 8px 25px rgba(243, 156, 18, 0.4);
 }
 
 .btn-primary:hover {
   transform: translateY(-3px);
-  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 12px 35px rgba(243, 156, 18, 0.6);
 }
 
 .btn-secondary {
-  background: transparent;
+  background: linear-gradient(135deg, #1d7c3a 0%, #2eab52 100%);
   color: white;
-  border: 2px solid rgba(255, 255, 255, 0.3);
+  border: 2px solid #f39c12;
 }
 
 .btn-secondary:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: white;
+  background: linear-gradient(135deg, #2eab52 0%, #1d7c3a 100%);
+  border-color: #ffed4e;
   transform: translateY(-3px);
+  box-shadow: 0 12px 35px rgba(29, 124, 58, 0.4);
 }
 
 /* Hero Stats */
@@ -519,18 +518,19 @@ button {
 }
 
 .feature-card {
-  background: white;
+  background: linear-gradient(135deg, #f0f9f0 0%, #e8f5e9 100%);
   border-radius: 12px;
   padding: 2rem;
-  border: 1px solid #e0e0e0;
+  border: 2px solid #c8e6c9;
   transition: var(--transition-slow);
   animation: fadeInUp 0.8s ease-out;
 }
 
 .feature-card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 20px 50px rgba(29, 124, 58, 0.25);
   border-color: var(--primary);
+  background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
 }
 
 .feature-icon {
@@ -572,7 +572,7 @@ button {
   min-height: 250px;
   display: flex;
   align-items: flex-end;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #1d7c3a 0%, #2eab52 100%);
 }
 
 .service-card:first-child {
@@ -680,31 +680,32 @@ button {
 }
 
 .stat-card {
-  background: white;
-  border: 1px solid #e0e0e0;
+  background: linear-gradient(135deg, #1d7c3a 0%, #2eab52 100%);
+  border: 2px solid #1a5f2f;
   border-radius: 12px;
   padding: 2rem;
   transition: var(--transition-slow);
   animation: fadeInUp 0.8s ease-out;
+  color: white;
 }
 
 .stat-card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
-  border-color: var(--primary);
+  box-shadow: 0 20px 50px rgba(29, 124, 58, 0.4);
+  border-color: #f39c12;
 }
 
 .stat-card .stat-value {
   font-size: 2.5rem;
   font-weight: 800;
-  color: var(--primary);
+  color: #ffed4e;
   margin-bottom: 0.5rem;
   text-transform: none;
   letter-spacing: 0;
 }
 
 .stat-card .stat-label {
-  color: var(--text-light);
+  color: #ffffff;
   font-size: 0.9rem;
   font-weight: 600;
   text-transform: none;
@@ -713,10 +714,10 @@ button {
 
 /* Table Styling */
 .table-container {
-  background: white;
+  background: linear-gradient(135deg, #f5f9f5 0%, #e8f5e9 100%);
   border-radius: 12px;
   overflow: hidden;
-  border: 1px solid #e0e0e0;
+  border: 2px solid #81c784;
   animation: fadeInUp 0.8s ease-out;
 }
 
@@ -726,15 +727,15 @@ button {
 }
 
 .table-container thead {
-  background: linear-gradient(135deg, #f8f9fa 0%, #ecf0f1 100%);
-  border-bottom: 2px solid #ddd;
+  background: linear-gradient(135deg, #1d7c3a 0%, #2eab52 100%);
+  border-bottom: 2px solid #1a5f2f;
 }
 
 .table-container th {
   padding: 1.5rem;
   text-align: left;
   font-weight: 700;
-  color: var(--text-dark);
+  color: white;
   text-transform: uppercase;
   font-size: 0.9rem;
   letter-spacing: 0.5px;
@@ -742,11 +743,11 @@ button {
 
 .table-container td {
   padding: 1.5rem;
-  border-bottom: 1px solid #e0e0e0;
+  border-bottom: 1px solid #c8e6c9;
 }
 
 .table-container tbody tr:hover {
-  background: #f8f9fa;
+  background: #c8e6c9;
 }
 
 .badge {
@@ -780,24 +781,24 @@ button {
 }
 
 .product-card {
-  background: white;
+  background: linear-gradient(135deg, #fff9e6 0%, #f5f5f5 100%);
   border-radius: 12px;
   overflow: hidden;
-  border: 1px solid #e0e0e0;
+  border: 2px solid #deb887;
   transition: var(--transition-slow);
   animation: fadeInUp 0.8s ease-out;
 }
 
 .product-card:hover {
   transform: translateY(-10px);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
-  border-color: var(--primary);
+  box-shadow: 0 20px 50px rgba(222, 184, 135, 0.4);
+  border-color: #f39c12;
 }
 
 .product-image {
   width: 100%;
   height: 250px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #1d7c3a 0%, #2eab52 100%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -876,11 +877,11 @@ button {
 
 /* Footer */
 .footer {
-  background: linear-gradient(135deg, var(--secondary) 0%, #0f2027 100%);
+  background: linear-gradient(135deg, #1d5f2f 0%, #0f3d1a 100%);
   color: white;
   padding: 4rem 2rem 2rem;
   margin-top: 5rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 3px solid #f39c12;
 }
 
 .footer-container {
@@ -987,6 +988,37 @@ button {
 .footer-bottom p {
   font-size: 0.95rem;
   line-height: 1.6;
+}
+
+/* ========================================
+   FORM STYLING
+   ======================================== */
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="password"],
+select,
+textarea {
+  background: linear-gradient(135deg, #f0f9f0 0%, #e8f5e9 100%);
+  border: 2px solid #81c784;
+  border-radius: 8px;
+  padding: 0.75rem;
+  color: var(--text-dark);
+  transition: var(--transition);
+  font-family: inherit;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="tel"]:focus,
+input[type="password"]:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: #1d7c3a;
+  background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+  box-shadow: 0 0 0 3px rgba(29, 124, 58, 0.1);
 }
 
 /* ========================================
