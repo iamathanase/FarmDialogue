@@ -4,9 +4,9 @@
   "description": "FarmDialogue Ghana - Agricultural Platform connecting farmers, vendors, and customers",
   "main": "front/index.html",
   "scripts": {
-    "dev": "php -S localhost:8000 -t front",
-    "build": "echo 'Static site - no build required'",
-    "start": "php -S localhost:8000 -t front"
+    "dev": "php -S localhost:8000",
+    "build": "true",
+    "start": "php -S localhost:8000"
   },
   "keywords": [
     "agriculture",
