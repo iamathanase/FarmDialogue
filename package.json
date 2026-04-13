@@ -1,0 +1,23 @@
+{
+  "name": "farmdialogue-ghana",
+  "version": "1.0.0",
+  "description": "FarmDialogue Ghana - Agricultural Platform connecting farmers, vendors, and customers",
+  "main": "front/index.html",
+  "scripts": {
+    "dev": "php -S localhost:8000 -t front",
+    "build": "echo 'Static site - no build required'",
+    "start": "php -S localhost:8000 -t front"
+  },
+  "keywords": [
+    "agriculture",
+    "farming",
+    "ghana",
+    "marketplace",
+    "farmers"
+  ],
+  "author": "iamathanase",
+  "license": "MIT",
+  "engines": {
+    "node": "18.x"
+  }
+}

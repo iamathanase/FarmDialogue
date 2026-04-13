@@ -1,0 +1,10 @@
+.git
+.gitignore
+README.md
+SCRUM.md
+PROJECT_STATUS.md
+SETUP_LOCAL.md
+node_modules
+.env.local
+.env.*.local
+*.log
