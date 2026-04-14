@@ -467,6 +467,45 @@ button {
   font-weight: 500;
 }
 
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+.stat-card {
+  background: var(--bg-white);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius);
+  padding: 2rem 1.5rem;
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+}
+
+.stat-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--primary);
+}
+
+.stat-card .stat-value {
+  display: block;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+  color: var(--accent);
+  line-height: 1;
+  margin-bottom: 0.75rem;
+}
+
+.stat-card .stat-label {
+  color: var(--text-light);
+  font-size: 0.95rem;
+  text-transform: none;
+  letter-spacing: 0;
+  margin-top: 0;
+}
+
 /* ========================================
    SECTIONS
    ======================================== */
@@ -1363,6 +1402,10 @@ button {
     grid-template-columns: 1fr;
   }
 
+  .stats-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .product-filter-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -1425,6 +1468,10 @@ button {
   }
 
   .products-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .stats-grid {
     grid-template-columns: 1fr;
   }
 

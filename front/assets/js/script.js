@@ -8,6 +8,91 @@ function scrollToSection(sectionId) {
     }
 }
 
+function formatCounterValue(value, element) {
+    const prefix = element.dataset.prefix || '';
+    const suffix = element.dataset.suffix || '';
+    const format = element.dataset.format || 'plain';
+
+    if (format === 'currency') {
+        return `${prefix}${value.toLocaleString('en-US')}${suffix}`;
+    }
+
+    if (format === 'compact') {
+        const compact = value >= 1000000
+            ? `${(value / 1000000).toFixed(value >= 10000000 ? 0 : 1)}M`
+            : value >= 1000
+                ? `${(value / 1000).toFixed(value >= 10000 ? 0 : 1)}K`
+                : `${value}`;
+        return `${prefix}${compact}${suffix}`;
+    }
+
+    return `${prefix}${value.toLocaleString('en-US')}${suffix}`;
+}
+
+function animateCounter(element, duration = 1600) {
+    if (element.dataset.countAnimated === 'true') {
+        return;
+    }
+
+    const target = Number(element.dataset.count);
+    if (Number.isNaN(target)) {
+        return;
+    }
+
+    const startTime = performance.now();
+    element.dataset.countAnimated = 'true';
+
+    const step = (currentTime) => {
+        const progress = Math.min((currentTime - startTime) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        const value = Math.round(target * eased);
+        element.textContent = formatCounterValue(value, element);
+
+        if (progress < 1) {
+            requestAnimationFrame(step);
+        }
+    };
+
+    requestAnimationFrame(step);
+}
+
+function initializeCounters() {
+    const counters = document.querySelectorAll('[data-count]');
+    if (!counters.length) {
+        return;
+    }
+
+    const runAllCounters = () => {
+        counters.forEach(counter => animateCounter(counter));
+    };
+
+    if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounter(entry.target);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.35 });
+
+        counters.forEach(counter => observer.observe(counter));
+    } else {
+        runAllCounters();
+    }
+
+    const triggerAllCountersOnce = () => {
+        runAllCounters();
+        document.removeEventListener('pointerdown', triggerAllCountersOnce);
+        document.removeEventListener('keydown', triggerAllCountersOnce);
+        window.removeEventListener('scroll', triggerAllCountersOnce);
+    };
+
+    document.addEventListener('pointerdown', triggerAllCountersOnce, { once: true });
+    document.addEventListener('keydown', triggerAllCountersOnce, { once: true });
+    window.addEventListener('scroll', triggerAllCountersOnce, { once: true, passive: true });
+}
+
 // Set active nav link based on current page
 document.addEventListener('DOMContentLoaded', function() {
     const navLinks = document.querySelectorAll('.nav-link');
@@ -61,6 +146,8 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
+
+    initializeCounters();
 });
 
 // Form validation
