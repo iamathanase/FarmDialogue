@@ -175,6 +175,7 @@
         </div>
     </div>
     
+    <script src="../assets/js/script.js"></script>
     <script>
         async function handleRegister(event) {
             event.preventDefault();
@@ -188,7 +189,7 @@
             const confirmPassword = document.getElementById('confirmPassword').value;
             
             if (password !== confirmPassword) {
-                alert('Passwords do not match!');
+                showToast('Passwords do not match.', 'error');
                 return;
             }
             
@@ -211,14 +212,16 @@
                 const data = await response.json();
                 
                 if (response.ok) {
-                    alert('Registration successful! Please login with your credentials.');
-                    window.location.href = 'login.html';
+                    showToast('Registration successful. Please log in with your credentials.', 'success', { duration: 2800, title: 'Account Created' });
+                    window.setTimeout(() => {
+                        window.location.href = 'login.html';
+                    }, 900);
                 } else {
-                    alert('Registration failed: ' + (data.message || 'Unknown error'));
+                    showToast('Registration failed: ' + (data.message || 'Unknown error'), 'error');
                 }
             } catch (error) {
                 console.error('Error:', error);
-                alert('An error occurred during registration');
+                showToast('An error occurred during registration.', 'error');
             }
         }
     </script>

@@ -8,6 +8,67 @@ function scrollToSection(sectionId) {
     }
 }
 
+function ensureToastContainer() {
+    let container = document.querySelector('.toast-container');
+    if (!container) {
+        container = document.createElement('div');
+        container.className = 'toast-container';
+        container.setAttribute('aria-live', 'polite');
+        container.setAttribute('aria-atomic', 'true');
+        document.body.appendChild(container);
+    }
+    return container;
+}
+
+function showToast(message, type = 'success', options = {}) {
+    const config = typeof options === 'number'
+        ? { duration: options }
+        : options;
+
+    const duration = config.duration ?? 3500;
+    const title = config.title || ({
+        success: 'Success',
+        error: 'Error',
+        warning: 'Warning',
+        info: 'Information',
+    })[type] || 'Notice';
+
+    const icons = {
+        success: '✓',
+        error: '!',
+        warning: '!',
+        info: 'i',
+    };
+
+    const toast = document.createElement('div');
+    toast.className = `toast toast-${type}`;
+    toast.setAttribute('role', type === 'error' ? 'alert' : 'status');
+    toast.innerHTML = `
+        <div class="toast-icon">${icons[type] || 'i'}</div>
+        <div class="toast-content">
+            <div class="toast-title">${title}</div>
+            <div class="toast-message">${message}</div>
+        </div>
+        <button type="button" class="toast-close" aria-label="Dismiss notification">&times;</button>
+    `;
+
+    const container = ensureToastContainer();
+    container.appendChild(toast);
+
+    const removeToast = () => {
+        toast.style.animation = 'toastOut 0.22s ease-in forwards';
+        setTimeout(() => toast.remove(), 220);
+    };
+
+    toast.querySelector('.toast-close').addEventListener('click', removeToast);
+    window.setTimeout(removeToast, duration);
+    return toast;
+}
+
+function showNotification(message, type = 'success', duration = 3000) {
+    return showToast(message, type, { duration });
+}
+
 function formatCounterValue(value, element) {
     const prefix = element.dataset.prefix || '';
     const suffix = element.dataset.suffix || '';
@@ -230,35 +291,6 @@ async function apiCall(endpoint, method = 'GET', data = null) {
     }
 }
 
-// Enhanced notification system
-function showNotification(message, type = 'success', duration = 3000) {
-    const notification = document.createElement('div');
-    notification.className = `notification notification-${type}`;
-    notification.textContent = message;
-    notification.style.cssText = `
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        padding: 1rem 2rem;
-        background-color: ${type === 'success' ? '#27ae60' : type === 'error' ? '#e74c3c' : '#f39c12'};
-        color: white;
-        border-radius: 8px;
-        z-index: 1000;
-        animation: slideIn 0.3s ease;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-        font-weight: 500;
-    `;
-    
-    document.body.appendChild(notification);
-    
-    setTimeout(() => {
-        notification.style.animation = 'slideOut 0.3s ease';
-        setTimeout(() => {
-            notification.remove();
-        }, 300);
-    }, duration);
-}
-
 // Enhanced login handler
 async function handleLogin(event) {
     event.preventDefault();
@@ -292,23 +324,62 @@ async function handleLogin(event) {
                 localStorage.setItem('rememberEmail', email);
             }
             
-            showNotification('Login successful! Redirecting...', 'success', 2000);
+            showToast('Login successful. Redirecting...', 'success', { duration: 2200 });
             
             // Redirect after brief delay for notification
             setTimeout(() => {
                 window.location.href = 'dashboard.html';
             }, 500);
         } else {
-            showNotification(data.message || 'Login failed. Please check your credentials.', 'error');
+            showToast(data.message || 'Login failed. Please check your credentials.', 'error');
             submitButton.textContent = originalText;
             submitButton.disabled = false;
         }
     } catch (error) {
         console.error('Error:', error);
-        showNotification('Connection error. Please try again.', 'error');
+        showToast('Connection error. Please try again.', 'error');
         submitButton.textContent = originalText;
         submitButton.disabled = false;
     }
+}
+
+async function handleContactForm(event) {
+    event.preventDefault();
+
+    const submitButton = event.target.querySelector('button[type="submit"]');
+    const originalText = submitButton ? submitButton.textContent : '';
+    if (submitButton) {
+        submitButton.textContent = 'Sending...';
+        submitButton.disabled = true;
+    }
+
+    try {
+        showToast('Message sent successfully. We will get back to you soon.', 'success', { duration: 2600, title: 'Message Sent' });
+        event.target.reset();
+    } catch (error) {
+        console.error('Contact form error:', error);
+        showToast('Unable to send your message right now. Please try again.', 'error');
+    } finally {
+        if (submitButton) {
+            submitButton.textContent = originalText;
+            submitButton.disabled = false;
+        }
+    }
+}
+
+function submitQuestion(event) {
+    event.preventDefault();
+    const title = document.getElementById('questionTitle').value;
+    const category = document.getElementById('questionCategory').value;
+    showToast(`Your question "${title}" about ${category} has been posted.`, 'success', { duration: 3000, title: 'Question Posted' });
+    if (typeof closeAskModal === 'function') {
+        closeAskModal();
+    }
+    event.target.reset();
+}
+
+function handleRegisterSuccess() {
+    showToast('Registration successful. Please log in with your credentials.', 'success', { duration: 2800, title: 'Account Created' });
 }
 
 // Pre-fill remembered email on login page
@@ -326,28 +397,6 @@ function fillRememberedEmail() {
 // Add CSS animations
 const style = document.createElement('style');
 style.textContent = `
-    @keyframes slideIn {
-        from {
-            transform: translateX(400px);
-            opacity: 0;
-        }
-        to {
-            transform: translateX(0);
-            opacity: 1;
-        }
-    }
-
-    @keyframes slideOut {
-        from {
-            transform: translateX(0);
-            opacity: 1;
-        }
-        to {
-            transform: translateX(400px);
-            opacity: 0;
-        }
-    }
-    
     .error {
         border-color: #e74c3c !important;
     }

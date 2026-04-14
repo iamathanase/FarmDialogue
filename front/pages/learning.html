@@ -1078,7 +1078,7 @@
             event.preventDefault();
             const title = document.getElementById('questionTitle').value;
             const category = document.getElementById('questionCategory').value;
-            alert(`Thank you! Your question "${title}" about ${category} has been posted to the community.`);
+            showToast(`Your question "${title}" about ${category} has been posted to the community.`, 'success', { duration: 2800, title: 'Question Posted' });
             closeAskModal();
             event.target.reset();
         }
