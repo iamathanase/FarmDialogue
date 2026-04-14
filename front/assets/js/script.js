@@ -443,4 +443,59 @@ document.head.appendChild(style);
 // Call pre-fill on page load
 document.addEventListener('DOMContentLoaded', fillRememberedEmail);
 
+// Product Filter Functionality
+function initializeProductFilter() {
+    const filterCards = document.querySelectorAll('.product-filter-card');
+    const productCards = document.querySelectorAll('.product-card');
+
+    if (filterCards.length === 0 || productCards.length === 0) return;
+
+    // Set initial active state (All)
+    filterCards.forEach(card => {
+        if (card.dataset.filter === 'all') {
+            card.classList.add('active');
+        }
+    });
+
+    // Add click handlers to filter buttons
+    filterCards.forEach(card => {
+        card.addEventListener('click', function() {
+            const filterValue = this.dataset.filter;
+
+            // Update active state
+            filterCards.forEach(c => c.classList.remove('active'));
+            this.classList.add('active');
+
+            // Filter products
+            productCards.forEach(productCard => {
+                if (filterValue === 'all') {
+                    productCard.style.display = 'block';
+                    setTimeout(() => {
+                        productCard.style.opacity = '1';
+                        productCard.style.animation = 'fadeInUp 0.3s ease-out';
+                    }, 10);
+                } else {
+                    const productCategory = productCard.dataset.category;
+                    if (productCategory === filterValue) {
+                        productCard.style.display = 'block';
+                        setTimeout(() => {
+                            productCard.style.opacity = '1';
+                            productCard.style.animation = 'fadeInUp 0.3s ease-out';
+                        }, 10);
+                    } else {
+                        productCard.style.opacity = '0';
+                        productCard.style.animation = 'fadeOut 0.2s ease-in';
+                        setTimeout(() => {
+                            productCard.style.display = 'none';
+                        }, 200);
+                    }
+                }
+            });
+        });
+    });
+}
+
+// Initialize product filter when DOM is ready
+document.addEventListener('DOMContentLoaded', initializeProductFilter);
+
 console.log('FarmDialogue Frontend Scripts Loaded');
