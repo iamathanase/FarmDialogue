@@ -50,7 +50,22 @@ function showToast(message, type = 'success', options = {}) {
             <div class="toast-message">${message}</div>
         </div>
         <button type="button" class="toast-close" aria-label="Dismiss notification">&times;</button>
+        <div class="toast-progress" aria-hidden="true"></div>
     `;
+
+    const progress = toast.querySelector('.toast-progress');
+    const iconHue = ({
+        success: 'var(--success)',
+        error: 'var(--danger)',
+        warning: 'var(--warning)',
+        info: 'var(--primary)',
+    })[type] || 'var(--primary)';
+
+    toast.style.color = iconHue;
+    if (progress) {
+        progress.style.animationDuration = `${duration}ms`;
+        progress.style.color = iconHue;
+    }
 
     const container = ensureToastContainer();
     container.appendChild(toast);
