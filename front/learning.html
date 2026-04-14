@@ -3,148 +3,446 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Learning Hub - FarmDialogue Ghana</title>
+    <title>Learning Hub - FarmDialogue</title>
+    <meta name="description" content="Learn farming best practices, agricultural techniques, and growing guides for sustainable agriculture.">
     <link rel="stylesheet" href="styles.css">
     <style>
+        /* Learning Hub Specific Styles */
         .learning-container {
-            max-width: 1200px;
-            margin: 2rem auto;
-            padding: 0 2rem;
+            padding-top: 70px;
+            background: linear-gradient(135deg, #f5f9f5 0%, #e8f2e8 100%);
         }
-        
-        .page-header {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-        
-        .page-header h1 {
-            color: #2c3e50;
-            font-size: 2rem;
-            margin-bottom: 1rem;
-        }
-        
-        .learning-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-        
-        .resource-card {
-            background: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s;
-        }
-        
-        .resource-card:hover {
-            transform: translateY(-10px);
-        }
-        
-        .resource-header {
-            background: linear-gradient(135deg, #2ecc71, #3498db);
-            color: white;
-            padding: 2rem;
-            text-align: center;
-            font-size: 2rem;
-        }
-        
-        .resource-type {
-            display: inline-block;
-            background: #e74c3c;
-            color: white;
-            padding: 0.4rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            margin-bottom: 0.5rem;
-        }
-        
-        .resource-type.article {
-            background: #3498db;
-        }
-        
-        .resource-type.video {
-            background: #e74c3c;
-        }
-        
-        .resource-type.tutorial {
-            background: #2ecc71;
-        }
-        
-        .resource-type.guide {
-            background: #f39c12;
-        }
-        
-        .resource-content {
-            padding: 1.5rem;
-        }
-        
-        .resource-title {
-            font-size: 1.2rem;
-            font-weight: bold;
-            color: #2c3e50;
-            margin-bottom: 0.8rem;
-        }
-        
-        .resource-description {
-            color: #95a5a6;
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-            line-height: 1.5;
-        }
-        
-        .resource-meta {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-top: 1px solid #ecf0f1;
-            padding-top: 1rem;
-            font-size: 0.85rem;
-            color: #95a5a6;
-        }
-        
-        .btn-learn {
-            background-color: #2ecc71;
-            color: white;
-            border: none;
-            padding: 0.6rem 1.2rem;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-            text-decoration: none;
-            display: inline-block;
-        }
-        
-        .btn-learn:hover {
-            background-color: #27ae60;
-        }
-        
-        .categories {
+
+        /* Resource Tabs */
+        .resource-tabs {
             display: flex;
             gap: 1rem;
             margin-bottom: 2rem;
             flex-wrap: wrap;
             justify-content: center;
+            animation: slideInDown 0.6s ease-out;
         }
-        
-        .category-btn {
-            padding: 0.6rem 1.2rem;
-            border: 2px solid #ecf0f1;
+
+        .tab-btn {
+            padding: 0.75rem 1.5rem;
             background: white;
-            color: #2c3e50;
-            border-radius: 20px;
+            border: 2px solid #ecf0f1;
+            border-radius: 25px;
+            font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            color: #7f8c8d;
         }
-        
-        .category-btn.active {
-            background: #2ecc71;
+
+        .tab-btn:hover {
+            border-color: #1d7c3a;
+            color: #1d7c3a;
+            transform: translateY(-2px);
+        }
+
+        .tab-btn.active {
+            background: linear-gradient(135deg, #1d7c3a 0%, #0d4a1f 100%);
             color: white;
-            border-color: #2ecc71;
+            border-color: #1d7c3a;
+            box-shadow: 0 8px 20px rgba(29, 124, 58, 0.3);
         }
-        
-        .category-btn:hover {
-            border-color: #2ecc71;
+
+        /* Card Styles */
+        .resource-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            animation: fadeInUp 0.6s ease-out;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .resource-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(29, 124, 58, 0.15);
+        }
+
+        .card-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, rgba(29, 124, 58, 0.1) 0%, rgba(46, 204, 113, 0.1) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, transparent 0%, rgba(0, 0, 0, 0.05) 100%);
+        }
+
+        .video-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(255, 68, 68, 0.9);
+            color: white;
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            z-index: 10;
+        }
+
+        .card-content {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-category {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #1d7c3a;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #1d7c3a;
+            margin-bottom: 0.8rem;
+            line-height: 1.4;
+        }
+
+        .card-description {
+            font-size: 0.95rem;
+            color: #7f8c8d;
+            margin-bottom: 1rem;
+            flex-grow: 1;
+        }
+
+        .card-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+            color: #95a5a6;
+            padding-top: 1rem;
+            border-top: 1px solid #ecf0f1;
+            margin-bottom: 1rem;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .card-footer {
+            display: flex;
+            gap: 1rem;
+            justify-content: space-between;
+        }
+
+        .read-more-btn {
+            flex: 1;
+            background: linear-gradient(135deg, #1d7c3a 0%, #0d4a1f 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 0.7rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .read-more-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(29, 124, 58, 0.3);
+        }
+
+        .like-btn {
+            background: none;
+            border: 2px solid #ecf0f1;
+            padding: 0.7rem 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .like-btn:hover {
+            border-color: #1d7c3a;
+            transform: scale(1.1);
+        }
+
+        .like-btn.liked {
+            background: rgba(220, 53, 69, 0.1);
+            border-color: #dc3545;
+            color: #dc3545;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            animation: fadeIn 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+
+        .modal.show {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            max-width: 800px;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            animation: slideInUp 0.3s ease;
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 2rem;
+            cursor: pointer;
+            color: #7f8c8d;
+            transition: color 0.3s;
+        }
+
+        .modal-close:hover {
+            color: #1d7c3a;
+        }
+
+        .modal-image {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(135deg, #1d7c3a 0%, #0d4a1f 100%);
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+        }
+
+        .modal-header h2 {
+            font-size: 2rem;
+            color: #1d7c3a;
+            margin-bottom: 0.5rem;
+        }
+
+        .modal-meta {
+            color: #95a5a6;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .modal-body {
+            color: #2c3e50;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .modal-body p {
+            margin-bottom: 1rem;
+        }
+
+        .modal-body ul, .modal-body ol {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .modal-body li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Q&A Section */
+        .qa-section {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .qa-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .qa-col {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .qa-item {
+            background: linear-gradient(135deg, rgba(29, 124, 58, 0.05) 0%, rgba(46, 204, 113, 0.05) 100%);
+            border-radius: 12px;
+            padding: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-left: 4px solid #1d7c3a;
+        }
+
+        .qa-item:hover {
+            transform: translateX(8px);
+            box-shadow: 0 6px 15px rgba(29, 124, 58, 0.1);
+        }
+
+        .qa-question {
+            font-weight: 700;
+            color: #1d7c3a;
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .qa-answer {
+            color: #7f8c8d;
+            font-size: 0.95rem;
+            display: none;
+            margin-top: 0.8rem;
+            padding-top: 0.8rem;
+            border-top: 1px solid rgba(29, 124, 58, 0.2);
+        }
+
+        .qa-item.active .qa-answer {
+            display: block;
+        }
+
+        .qa-toggle {
+            float: right;
+            color: #1d7c3a;
+            font-weight: 700;
+            transition: transform 0.3s;
+        }
+
+        .qa-item.active .qa-toggle {
+            transform: rotate(180deg);
+        }
+
+        .ask-question-btn {
+            background: linear-gradient(135deg, #1d7c3a 0%, #0d4a1f 100%);
+            color: white;
+            border: none;
+            padding: 1rem;
+            border-radius: 12px;
+            font-weight: 600;
+            width: 100%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .ask-question-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(29, 124, 58, 0.3);
+        }
+
+        /* Grid */
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        /* Smooth transitions */
+        @keyframes slideInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .qa-container {
+                grid-template-columns: 1fr;
+            }
+
+            .resources-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-content {
+                padding: 1.5rem;
+                margin: 1rem;
+            }
+
+            .resource-tabs {
+                gap: 0.5rem;
+            }
+
+            .tab-btn {
+                padding: 0.6rem 1rem;
+                font-size: 0.9rem;
+            }
         }
     </style>
 </head>
@@ -153,177 +451,660 @@
     <nav class="navbar">
         <div class="navbar-container">
             <div class="navbar-logo">
-                <h1>🌾 FarmDialogue Ghana</h1>
+                <img src="logo_farm.jpg" alt="FarmDialogue Logo" style="height: 50px; margin-right: 0.75rem; display: inline-block; vertical-align: middle;">
+                <h1 style="display: inline-block; margin: 0;">FarmDialogue</h1>
             </div>
             <ul class="nav-menu">
                 <li><a href="index.html" class="nav-link">Home</a></li>
                 <li><a href="products.html" class="nav-link">Products</a></li>
                 <li><a href="learning.html" class="nav-link active">Learn</a></li>
                 <li><a href="about.html" class="nav-link">About</a></li>
-                <li><a href="login.html" class="nav-link btn-login">Login</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+                <li><a href="login.html" class="btn-login">Sign In</a></li>
             </ul>
+            <button class="menu-toggle">☰</button>
         </div>
     </nav>
 
-    <!-- Learning Hub Section -->
     <div class="learning-container">
-        <div class="page-header">
-            <h1>📚 Learning Hub</h1>
-            <p>Master the art of farming and gardening with our comprehensive resources</p>
+        <!-- Page Header -->
+        <section class="section" style="padding-top: 4rem;">
+            <div class="section-header">
+                <span class="section-label">Knowledge Base</span>
+                <h2 class="section-title">Learn & Grow</h2>
+                <p class="section-description">Master farming techniques, sustainability practices, and profitable agriculture methods with our comprehensive resource library.</p>
+            </div>
+
+            <!-- Resource Tabs -->
+            <div class="resource-tabs">
+                <button class="tab-btn active" onclick="filterResources('all')">All Resources</button>
+                <button class="tab-btn" onclick="filterResources('video')">Videos</button>
+                <button class="tab-btn" onclick="filterResources('article')">Articles</button>
+                <button class="tab-btn" onclick="filterResources('guide')">Guides</button>
+                <button class="tab-btn" onclick="filterResources('tutorial')">Tutorials</button>
+            </div>
+
+            <!-- Resources Grid -->
+            <div class="resources-grid" id="resourcesGrid">
+                <!-- Resources will be populated by JavaScript -->
+            </div>
+        </section>
+
+        <!-- Q&A Section -->
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Community Support</span>
+                <h2 class="section-title">Frequently Asked Questions</h2>
+                <p class="section-description">Find answers to common farming questions from our community and experts.</p>
+            </div>
+
+            <div class="qa-section">
+                <div class="qa-container">
+                    <div class="qa-col" id="qaCol1">
+                        <!-- Q&A items will be populated by JavaScript -->
+                    </div>
+                    <div class="qa-col" id="qaCol2">
+                        <!-- Q&A items will be populated by JavaScript -->
+                    </div>
+                </div>
+                <button class="ask-question-btn" onclick="openAskModal()" style="margin-top: 2rem;">+ Ask a Question</button>
+            </div>
+        </section>
+
+        <!-- Featured Resources -->
+        <section class="section" style="background: linear-gradient(135deg, rgba(29, 124, 58, 0.05) 0%, rgba(242, 112, 156, 0.05) 100%);">
+            <div class="section-header">
+                <h2 class="section-title">Featured This Week</h2>
+                <p class="section-description">Don't miss our top trending content selected for maximum farmer impact.</p>
+            </div>
+
+            <div class="resources-grid">
+                <div class="resource-card">
+                    <div class="card-image">📊</div>
+                    <div class="card-content">
+                        <div class="card-category">Analysis</div>
+                        <div class="card-title">Q1 Market Analysis Report</div>
+                        <div class="card-description">Comprehensive data-driven insights into current agricultural market trends across West Africa.</div>
+                        <div class="card-meta">
+                            <span class="meta-item">📅 Updated Today</span>
+                            <span class="meta-item">⏱️ 12 min read</span>
+                        </div>
+                        <div class="card-footer">
+                            <button class="read-more-btn" onclick="openModal('market-analysis')">Read Full Report</button>
+                            <button class="like-btn" onclick="toggleLike(event)">❤️</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="resource-card">
+                    <div class="card-image">🌾</div>
+                    <div class="card-content">
+                        <div class="card-category">Success Story</div>
+                        <div class="card-title">How Kwesi Tripled His Yields</div>
+                        <div class="card-description">Real-world case study: A Ghanaian farmer shares his journey from struggling to thriving using modern techniques.</div>
+                        <div class="card-meta">
+                            <span class="meta-item">✅ Verified</span>
+                            <span class="meta-item">👥 1.2K shares</span>
+                        </div>
+                        <div class="card-footer">
+                            <button class="read-more-btn" onclick="openModal('success-story')">View Story</button>
+                            <button class="like-btn" onclick="toggleLike(event)">❤️</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="resource-card">
+                    <div class="card-image">💡</div>
+                    <div class="card-content">
+                        <div class="card-category">Innovation</div>
+                        <div class="card-title">Tech Solutions for Small Farms</div>
+                        <div class="card-description">Affordable tools and technology that can revolutionize your farming operations without breaking the bank.</div>
+                        <div class="card-meta">
+                            <span class="meta-item">🔥 Trending</span>
+                            <span class="meta-item">💬 347 comments</span>
+                        </div>
+                        <div class="card-footer">
+                            <button class="read-more-btn" onclick="openModal('tech-solutions')">Explore Tools</button>
+                            <button class="like-btn" onclick="toggleLike(event)">❤️</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Modal for detailed content -->
+    <div id="resourceModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()">&times;</button>
+            <div class="modal-image" id="modalImage"></div>
+            <div class="modal-header">
+                <h2 id="modalTitle"></h2>
+            </div>
+            <div class="modal-meta" id="modalMeta"></div>
+            <div class="modal-body" id="modalBody"></div>
         </div>
+    </div>
 
-        <!-- Category Filter -->
-        <div class="categories">
-            <button class="category-btn active" onclick="filterCategory('all')">All</button>
-            <button class="category-btn" onclick="filterCategory('article')">Articles</button>
-            <button class="category-btn" onclick="filterCategory('tutorial')">Tutorials</button>
-            <button class="category-btn" onclick="filterCategory('video')">Videos</button>
-            <button class="category-btn" onclick="filterCategory('guide')">Guides</button>
-        </div>
-
-        <!-- Learning Resources Grid -->
-        <div class="learning-grid" id="learningGrid">
-            <!-- Articles -->
-            <div class="resource-card" data-category="article">
-                <div class="resource-header">📰</div>
-                <div class="resource-content">
-                    <span class="resource-type article">Article</span>
-                    <div class="resource-title">Getting Started with Organic Farming</div>
-                    <div class="resource-description">Learn the fundamentals of organic farming practices, soil management, and sustainable agriculture techniques.</div>
-                    <div class="resource-meta">
-                        <span>5 min read</span>
-                        <a href="#" class="btn-learn">Read More</a>
-                    </div>
+    <!-- Modal for asking questions -->
+    <div id="askModal" class="modal">
+        <div class="modal-content" style="max-width: 600px;">
+            <button class="modal-close" onclick="closeAskModal()">&times;</button>
+            <h2 style="color: #1d7c3a; margin-bottom: 1.5rem;">Ask the Community</h2>
+            <form onsubmit="submitQuestion(event)">
+                <div class="form-group">
+                    <label>Your Question</label>
+                    <input type="text" id="questionTitle" required placeholder="What would you like to know?" style="border-radius: 12px; padding: 0.8rem;">
                 </div>
-            </div>
-
-            <!-- Tutorials -->
-            <div class="resource-card" data-category="tutorial">
-                <div class="resource-header">🎓</div>
-                <div class="resource-content">
-                    <span class="resource-type tutorial">Tutorial</span>
-                    <div class="resource-title">How to Build a Vegetable Garden</div>
-                    <div class="resource-description">Step-by-step guide to creating your first vegetable garden, from planning to harvesting your first crop.</div>
-                    <div class="resource-meta">
-                        <span>10 min</span>
-                        <a href="#" class="btn-learn">Start Guide</a>
-                    </div>
+                <div class="form-group">
+                    <label>More Details (Optional)</label>
+                    <textarea id="questionDetail" placeholder="Provide context and details..." rows="4" style="border-radius: 12px; padding: 0.8rem; resize: none;"></textarea>
                 </div>
-            </div>
-
-            <!-- Videos -->
-            <div class="resource-card" data-category="video">
-                <div class="resource-header">🎬</div>
-                <div class="resource-content">
-                    <span class="resource-type video">Video</span>
-                    <div class="resource-title">Composting 101: Waste to Wealth</div>
-                    <div class="resource-description">Watch how to create compost from kitchen and garden waste to enrich your soil naturally.</div>
-                    <div class="resource-meta">
-                        <span>15 min</span>
-                        <a href="#" class="btn-learn">Watch Video</a>
-                    </div>
+                <div class="form-group">
+                    <label>Category</label>
+                    <select id="questionCategory" style="border-radius: 12px; padding: 0.8rem;">
+                        <option>Soil & Fertilization</option>
+                        <option>Water Management</option>
+                        <option>Pest Control</option>
+                        <option>Crop Selection</option>
+                        <option>Equipment</option>
+                        <option>Market & Pricing</option>
+                        <option>Other</option>
+                    </select>
                 </div>
-            </div>
-
-            <!-- Guides -->
-            <div class="resource-card" data-category="guide">
-                <div class="resource-header">📖</div>
-                <div class="resource-content">
-                    <span class="resource-type guide">Guide</span>
-                    <div class="resource-title">Pest Management Without Chemicals</div>
-                    <div class="resource-description">Comprehensive guide to natural and organic pest control methods for your garden.</div>
-                    <div class="resource-meta">
-                        <span>Complete</span>
-                        <a href="#" class="btn-learn">Explore</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- More Articles -->
-            <div class="resource-card" data-category="article">
-                <div class="resource-header">📰</div>
-                <div class="resource-content">
-                    <span class="resource-type article">Article</span>
-                    <div class="resource-title">Understanding Soil pH and Nutrients</div>
-                    <div class="resource-description">Deep dive into soil testing, pH levels, and nutrient management for optimal plant growth.</div>
-                    <div class="resource-meta">
-                        <span>6 min read</span>
-                        <a href="#" class="btn-learn">Read More</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- More Tutorials -->
-            <div class="resource-card" data-category="tutorial">
-                <div class="resource-header">🎓</div>
-                <div class="resource-content">
-                    <span class="resource-type tutorial">Tutorial</span>
-                    <div class="resource-title">Greenhouse Gardening Basics</div>
-                    <div class="resource-description">Learn how to set up and maintain a greenhouse for year-round gardening success.</div>
-                    <div class="resource-meta">
-                        <span>12 min</span>
-                        <a href="#" class="btn-learn">Start Guide</a>
-                    </div>
-                </div>
-            </div>
+                <button type="submit" class="btn" style="background: linear-gradient(135deg, #1d7c3a 0%, #0d4a1f 100%); color: white; width: 100%; padding: 1rem; border-radius: 12px; font-weight: 600;">Post Question</button>
+            </form>
         </div>
     </div>
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-section">
-                <div class="footer-brand">
-                    <h3>🌾 FarmDialogue Ghana</h3>
-                    <p>Connecting farmers, gardeners, vendors, and customers across Ghana. Building a stronger agricultural community through direct trade and knowledge sharing.</p>
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-section footer-brand">
+                    <h2>FarmDialogue</h2>
+                    <p>Empowering farmers, connecting communities, and building sustainable agriculture across Africa.</p>
+                    <div class="social-links">
+                        <a href="#" title="Facebook">f</a>
+                        <a href="#" title="Twitter">𝕏</a>
+                        <a href="#" title="Instagram">📷</a>
+                        <a href="#" title="LinkedIn">in</a>
+                    </div>
                 </div>
-                <div class="footer-links">
-                    <h4>Company</h4>
-                    <a href="index.html">Home</a>
-                    <a href="about.html">About Us</a>
-                    <a href="learning.html">Learning Hub</a>
-                    <a href="products.html">Products</a>
+                <div class="footer-section">
+                    <h3>Company</h3>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Press</a></li>
+                    </ul>
                 </div>
-                <div class="footer-links">
-                    <h4>Support</h4>
-                    <a href="#">Help Center</a>
-                    <a href="#">Contact Us</a>
-                    <a href="#">FAQ</a>
-                    <a href="#">Feedback</a>
+                <div class="footer-section">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
                 </div>
-                <div class="footer-links">
-                    <h4>Legal</h4>
-                    <a href="#">Privacy Policy</a>
-                    <a href="#">Terms of Service</a>
-                    <a href="#">Cookie Policy</a>
-                    <a href="#">Security</a>
+                <div class="footer-section">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="learning.html">Learning Hub</a></li>
+                        <li><a href="#">Farmer Guide</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Community</a></li>
+                    </ul>
                 </div>
             </div>
+
             <div class="footer-bottom">
-                <p>&copy; 2026 FarmDialogue Ghana. All rights reserved. | Building Ghana's agricultural future, one connection at a time.</p>
+                <p>&copy; 2026 FarmDialogue Ghana. All rights reserved. | Connecting Africa's Agricultural Future</p>
             </div>
         </div>
     </footer>
 
     <script src="script.js"></script>
     <script>
-        function filterCategory(category) {
-            const cards = document.querySelectorAll('.resource-card');
-            const buttons = document.querySelectorAll('.category-btn');
+        // Learning Hub Data
+        const resources = [
+            // Videos
+            {
+                id: 'planting-techniques',
+                type: 'video',
+                category: 'Agriculture Basics',
+                title: 'Modern Planting Techniques for African Crops',
+                description: 'Learn the latest methods for planting maize, cassava, and yams with optimal spacing and depth.',
+                emoji: '',
+                readTime: '15 min',
+                likes: 324,
+                views: '2.3K',
+                content: `
+                    <p><strong>Duration:</strong> 15 minutes</p>
+                    <p>This comprehensive video tutorial covers:</p>
+                    <ul>
+                        <li>Optimal planting depth for different crops</li>
+                        <li>Spacing techniques for maximum yield</li>
+                        <li>Seed preparation methods</li>
+                        <li>Seasonal considerations for your region</li>
+                        <li>Common mistakes to avoid</li>
+                    </ul>
+                    <p>Expert instructor Kofi Mensah walks you through step-by-step demonstrations with real farm footage from Ghana, Ivory Coast, and Nigeria.</p>
+                `
+            },
+            // Articles
+            {
+                id: 'soil-health',
+                type: 'article',
+                category: 'Soil Management',
+                title: 'Building Healthy Soil for Better Harvests',
+                description: 'Comprehensive guide to understanding soil composition and improving soil fertility naturally.',
+                emoji: '',
+                readTime: '12 min',
+                likes: 567,
+                views: '4.1K',
+                content: `
+                    <p><strong>By:</strong> Dr. Ama Owusu, Agricultural Scientist</p>
+                    <p><strong>Published:</strong> March 2024</p>
+                    <p>Healthy soil is the foundation of successful farming. Learn the key indicators of soil health and practical methods to improve yours:</p>
+                    <ul>
+                        <li><strong>pH Balance:</strong> Why it matters and how to test it</li>
+                        <li><strong>Organic Matter:</strong> Composting and mulching techniques</li>
+                        <li><strong>Microorganisms:</strong> Building beneficial soil life</li>
+                        <li><strong>Nutrient Cycling:</strong> Natural fertilization methods</li>
+                        <li><strong>Erosion Prevention:</strong> Protecting your soil during rainy season</li>
+                    </ul>
+                    <p>Transform your soil within 6 months using these proven techniques used by successful farmers across West Africa.</p>
+                `
+            },
+            // Guides
+            {
+                id: 'water-management',
+                type: 'guide',
+                category: 'Water Management',
+                title: 'Complete Guide to Drip Irrigation Systems',
+                description: 'Step-by-step guide to installing and maintaining efficient irrigation for water conservation.',
+                emoji: '',
+                readTime: '18 min',
+                likes: 892,
+                views: '6.2K',
+                content: `
+                    <p><strong>Complete Installation & Maintenance Guide</strong></p>
+                    <h3>Part 1: System Selection</h3>
+                    <ul>
+                        <li>Budget-friendly options (₵500-1,000)</li>
+                        <li>Mid-range solutions (₵1,000-3,000)</li>
+                        <li>Large-scale systems</li>
+                    </ul>
+                    <h3>Part 2: Installation Steps</h3>
+                    <ul>
+                        <li>Planning water source and storage</li>
+                        <li>Laying main and lateral pipes</li>
+                        <li>Installing drippers and filters</li>
+                        <li>Testing for efficiency</li>
+                    </ul>
+                    <h3>Part 3: Operation & Maintenance</h3>
+                    <ul>
+                        <li>Optimal watering schedules</li>
+                        <li>Seasonal adjustments</li>
+                        <li>Cleaning and unclogging drippers</li>
+                        <li>Winterization and storage</li>
+                    </ul>
+                    <p>Save up to 40% on water costs while increasing yields by 25-30%.</p>
+                `
+            },
+            // Tutorials
+            {
+                id: 'pest-management',
+                type: 'tutorial',
+                category: 'Pest Control',
+                title: 'Natural Pest Control Without Chemicals',
+                description: 'Learn eco-friendly methods to protect your crops from pests and diseases.',
+                emoji: '',
+                readTime: '14 min',
+                likes: 445,
+                views: '3.8K',
+                content: `
+                    <p><strong>Complete Tutorial on Organic Pest Management</strong></p>
+                    <h3>Prevention Strategies</h3>
+                    <ul>
+                        <li>Crop rotation principles</li>
+                        <li>Companion planting techniques</li>
+                        <li>Beneficial insect cultivation</li>
+                        <li>Physical barriers and traps</li>
+                    </ul>
+                    <h3>Natural Remedies</h3>
+                    <ul>
+                        <li>Neem oil spray recipe and application</li>
+                        <li>Garlic and chili solution</li>
+                        <li>Soap spray for soft-bodied insects</li>
+                        <li>Bacterial pesticides (Bt)</li>
+                    </ul>
+                    <h3>Disease Management</h3>
+                    <ul>
+                        <li>Identifying common diseases</li>
+                        <li>Preventive measures</li>
+                        <li>Treatment options</li>
+                    </ul>
+                    <p>Protect your investment without harming the environment or your income.</p>
+                `
+            },
+            {
+                id: 'crop-selection',
+                type: 'guide',
+                category: 'Crop Planning',
+                title: 'Choosing the Right Crops for Your Climate',
+                description: 'Data-driven approach to selecting profitable crops suited to your region and season.',
+                emoji: '',
+                readTime: '13 min',
+                likes: 623,
+                views: '5.4K',
+                content: `
+                    <p><strong>Strategic Crop Selection for Maximum Profit</strong></p>
+                    <h3>Climate Assessment</h3>
+                    <ul>
+                        <li>Understanding rainfall patterns</li>
+                        <li>Temperature requirements</li>
+                        <li>Soil type compatibility</li>
+                        <li>Seasonal planning</li>
+                    </ul>
+                    <h3>Market Analysis</h3>
+                    <ul>
+                        <li>Current regional demand</li>
+                        <li>Price trends and forecasts</li>
+                        <li>Export opportunities</li>
+                        <li>Niche market crops</li>
+                    </ul>
+                    <h3>Crop-Specific Guides</h3>
+                    <ul>
+                        <li>Maize: High-yield varieties and timing</li>
+                        <li>Cassava: Preparation and harvesting</li>
+                        <li>Tomatoes: Season-specific techniques</li>
+                        <li>Leafy greens: Year-round production</li>
+                    </ul>
+                `
+            },
+            {
+                id: 'fertilizer-guide',
+                type: 'article',
+                category: 'Nutrition',
+                title: 'Organic Fertilizers: Making Your Own Compost',
+                description: 'Cost-effective methods to create nutrient-rich fertilizer from farm waste.',
+                emoji: '',
+                readTime: '11 min',
+                likes: 734,
+                views: '5.9K',
+                content: `
+                    <p><strong>DIY Composting for Farm Profitability</strong></p>
+                    <h3>Composting Basics</h3>
+                    <ul>
+                        <li>Materials needed (free and low-cost)</li>
+                        <li>C:N ratio explained</li>
+                        <li>Moisture and aeration management</li>
+                        <li>Timeline to ready compost</li>
+                    </ul>
+                    <h3>Quick Compost Recipes</h3>
+                    <ul>
+                        <li>3-month compost pile</li>
+                        <li>6-month slow compost</li>
+                        <li>Bokashi fermenting method</li>
+                        <li>Worm composting (Vermicompost)</li>
+                    </ul>
+                    <h3>Using Your Compost</h3>
+                    <ul>
+                        <li>Application rates by crop</li>
+                        <li>Seasonal timing</li>
+                        <li>Cost savings calculation</li>
+                    </ul>
+                    <p>Turn waste into wealth - save ₵200-400/month on fertilizer costs.</p>
+                `
+            },
+            {
+                id: 'equipment-review',
+                type: 'video',
+                category: 'Equipment',
+                title: 'Essential Farm Tools Review & Maintenance',
+                description: 'Expert review of must-have farming equipment and how to maintain them for longevity.',
+                emoji: '',
+                readTime: '16 min',
+                likes: 356,
+                views: '2.7K',
+                content: `
+                    <p><strong>Equipment Worth Your Investment</strong></p>
+                    <p>Duration: 16 minutes | Expert: Samuel Opoku</p>
+                    <h3>Budget Tools (₵100-500)</h3>
+                    <ul>
+                        <li>Quality hand hoes and rakes</li>
+                        <li>Watering cans and hoses</li>
+                        <li>Pruning shears and machetes</li>
+                    </ul>
+                    <h3>Mid-Range Equipment (₵500-2,000)</h3>
+                    <ul>
+                        <li>Sprayers and sprinklers</li>
+                        <li>Wheelbarrows and carts</li>
+                        <li>Powered cultivators</li>
+                    </ul>
+                    <h3>Maintenance Tips</h3>
+                    <ul>
+                        <li>Cleaning after each use</li>
+                        <li>Sharpening techniques</li>
+                        <li>Rust prevention</li>
+                        <li>Storage best practices</li>
+                    </ul>
+                `
+            },
+            {
+                id: 'market-trends',
+                type: 'article',
+                category: 'Market Analysis',
+                title: 'March 2024 Market Prices & Trends',
+                description: 'Current commodity prices and market forecast for the next 3 months.',
+                emoji: '',
+                readTime: '9 min',
+                likes: 512,
+                views: '3.2K',
+                content: `
+                    <p><strong>Current Market Overview - March 2024</strong></p>
+                    <h3>Price Trends</h3>
+                    <ul>
+                        <li><strong>Maize:</strong> ₵120-140/bag (↑2% from Feb)</li>
+                        <li><strong>Cassava:</strong> ₵15-18/kg (Stable)</li>
+                        <li><strong>Tomatoes:</strong> ₵20-25/kg (↑8% seasonal demand)</li>
+                        <li><strong>Leafy Greens:</strong> ₵8-12/bundle (↑3%)</li>
+                    </ul>
+                    <h3>Demand Forecast</h3>
+                    <ul>
+                        <li>High demand crops for next quarter</li>
+                        <li>Recommended planting schedule</li>
+                        <li>Bulk buyer opportunities</li>
+                    </ul>
+                    <h3>Strategy Tips</h3>
+                    <ul>
+                        <li>Timing for maximum profit</li>
+                        <li>Storage recommendations</li>
+                        <li>Bulk selling advantages</li>
+                    </ul>
+                `
+            }
+        ];
+
+        const faqs = [
+            {
+                question: 'How often should I water my crops?',
+                answer: 'Watering frequency depends on your crop type and soil. Most crops need 1-2 inches per week. Check soil moisture 2-3 inches deep - if dry, it\'s time to water. Monitor weather and adjust accordingly.'
+            },
+            {
+                question: 'What\'s the best time to harvest maize?',
+                answer: 'Harvest maize when the husks are pale brown and the kernels have dried to a hard texture. Typically 20-22 weeks after planting. Leave cobs in the field for organic matter or use for compost.'
+            },
+            {
+                question: 'Is organic farming more profitable?',
+                answer: 'Yes, organic products command 20-40% premium prices. Initial investment is lower (no expensive chemicals), and soil health improves over time, reducing long-term costs.'
+            },
+            {
+                question: 'How can I prevent crop diseases naturally?',
+                answer: 'Use crop rotation, companion planting, proper spacing for air circulation, and organic sprays (neem oil, garlic solution). Remove diseased plants immediately to prevent spread.'
+            },
+            {
+                question: 'What\'s the ideal soil pH for most vegetables?',
+                answer: 'Most vegetables prefer pH 6.0-7.0 (slightly acidic to neutral). Test your soil regularly. Add lime to raise pH or sulfur to lower it. Adjust gradually over seasons.'
+            },
+            {
+                question: 'When should I fertilize my crops?',
+                answer: 'Apply compost or organic fertilizer at planting. Side-dress with nitrogen during growing phase. Avoid over-fertilizing - follow crop-specific recommendations for your region.'
+            },
+            {
+                question: 'How do I know if my soil is healthy?',
+                answer: 'Healthy soil should be dark, crumbly, full of life (earthworms), and smell earthy. Test pH and nutrient levels annually. Good soil drains well but holds moisture.'
+            },
+            {
+                question: 'Can I grow crops during the dry season?',
+                answer: 'Yes! Use drip irrigation or water conservation techniques. Grow drought-resistant crops like cassava, okra, and peppers. Mulch heavily to retain soil moisture.'
+            },
+            {
+                question: 'How much profit can I expect from 1 acre?',
+                answer: 'This varies by crop and management. Tomatoes: ₵3,000-8,000, Maize: ₵2,000-5,000, Cassava: ₵4,000-10,000. Premium prices and better management increase profits significantly.'
+            },
+            {
+                question: 'Should I use hybrid or local crop varieties?',
+                answer: 'Hybrids offer higher yields but cost more. Local varieties adapt better to your climate and cost less. Many successful farmers use a combination based on market demand and personal preference.'
+            }
+        ];
+
+        // Populate Q&A
+        function populateQA() {
+            const col1 = document.getElementById('qaCol1');
+            const col2 = document.getElementById('qaCol2');
             
-            // Update active button
-            buttons.forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
-            
-            // Filter cards
-            cards.forEach(card => {
-                if (category === 'all') {
-                    card.style.display = 'block';
+            faqs.forEach((faq, index) => {
+                const qaItem = document.createElement('div');
+                qaItem.className = 'qa-item';
+                qaItem.innerHTML = `
+                    <div class="qa-question">
+                        <span class="qa-toggle">▼</span>
+                        ${faq.question}
+                    </div>
+                    <div class="qa-answer">${faq.answer}</div>
+                `;
+                qaItem.addEventListener('click', () => {
+                    qaItem.classList.toggle('active');
+                });
+                
+                if (index < 5) {
+                    col1.appendChild(qaItem);
                 } else {
-                    card.style.display = card.dataset.category === category ? 'block' : 'none';
+                    col2.appendChild(qaItem);
                 }
             });
         }
+
+        // Populate Resources
+        function populateResources(filter = 'all') {
+            const grid = document.getElementById('resourcesGrid');
+            grid.innerHTML = '';
+            
+            const filtered = filter === 'all' ? resources : resources.filter(r => r.type === filter);
+            
+            filtered.forEach((resource, index) => {
+                const card = document.createElement('div');
+                card.className = 'resource-card';
+                card.style.animationDelay = `${index * 0.1}s`;
+                
+                card.innerHTML = `
+                    <div class="card-image">
+                        ${resource.type === 'video' ? '<span class="video-badge">📹 VIDEO</span>' : ''}
+                        ${resource.emoji}
+                    </div>
+                    <div class="card-content">
+                        <div class="card-category">${resource.category}</div>
+                        <div class="card-title">${resource.title}</div>
+                        <div class="card-description">${resource.description}</div>
+                        <div class="card-meta">
+                            <span class="meta-item">👁️ ${resource.views}</span>
+                            <span class="meta-item">⏱️ ${resource.readTime}</span>
+                        </div>
+                        <div class="card-footer">
+                            <button class="read-more-btn" onclick="openModal('${resource.id}')">Read More</button>
+                            <button class="like-btn" onclick="toggleLike(event)">❤️</button>
+                        </div>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // Filter Resources
+        function filterResources(type) {
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            populateResources(type);
+        }
+
+        // Modal Functions
+        function openModal(resourceId) {
+            const resource = resources.find(r => r.id === resourceId);
+            if (!resource) return;
+            
+            document.getElementById('modalImage').textContent = resource.emoji;
+            document.getElementById('modalTitle').textContent = resource.title;
+            document.getElementById('modalMeta').innerHTML = `
+                <span>${resource.category}</span> • 
+                <span>${resource.readTime}</span> • 
+                <span>${resource.likes} likes</span>
+            `;
+            document.getElementById('modalBody').innerHTML = resource.content;
+            document.getElementById('resourceModal').classList.add('show');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.getElementById('resourceModal').classList.remove('show');
+            document.body.style.overflow = 'auto';
+        }
+
+        function openAskModal() {
+            document.getElementById('askModal').classList.add('show');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeAskModal() {
+            document.getElementById('askModal').classList.remove('show');
+            document.body.style.overflow = 'auto';
+        }
+
+        function submitQuestion(event) {
+            event.preventDefault();
+            const title = document.getElementById('questionTitle').value;
+            const category = document.getElementById('questionCategory').value;
+            alert(`Thank you! Your question "${title}" about ${category} has been posted to the community.`);
+            closeAskModal();
+            event.target.reset();
+        }
+
+        function toggleLike(event) {
+            event.stopPropagation();
+            event.target.classList.toggle('liked');
+        }
+
+        // Close modal when clicking outside
+        document.addEventListener('click', (e) => {
+            const modal = document.getElementById('resourceModal');
+            if (e.target === modal) {
+                closeModal();
+            }
+            const askModal = document.getElementById('askModal');
+            if (e.target === askModal) {
+                closeAskModal();
+            }
+        });
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            populateResources();
+            populateQA();
+        });
     </script>
 </body>
 </html>

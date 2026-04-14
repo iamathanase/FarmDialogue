@@ -3,248 +3,200 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About - FarmDialogue Ghana</title>
+    <title>About FarmDialogue - Our Mission</title>
+    <meta name="description" content="Learn about FarmDialogue's mission to empower farmers and connect agricultural communities across Africa.">
     <link rel="stylesheet" href="styles.css">
-    <style>
-        .about-container {
-            max-width: 1000px;
-            margin: 2rem auto;
-            padding: 0 2rem;
-        }
-        
-        .about-hero {
-            background: linear-gradient(135deg, #2ecc71, #3498db);
-            color: white;
-            padding: 3rem 2rem;
-            border-radius: 10px;
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-        
-        .about-hero h1 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-        
-        .about-section {
-            background: white;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-        
-        .about-section h2 {
-            color: #2ecc71;
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-        }
-        
-        .about-section p {
-            color: #555;
-            line-height: 1.8;
-            margin-bottom: 1rem;
-        }
-        
-        .about-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-        
-        .about-card {
-            text-align: center;
-            padding: 1.5rem;
-            background: #f8f9fa;
-            border-radius: 10px;
-        }
-        
-        .about-card h3 {
-            color: #2ecc71;
-            margin-bottom: 0.5rem;
-        }
-        
-        .about-card p {
-            color: #95a5a6;
-            font-size: 0.9rem;
-        }
-        
-        .team-section {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-        
-        .team-member {
-            text-align: center;
-            padding: 1.5rem;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-        
-        .member-avatar {
-            width: 100px;
-            height: 100px;
-            background: linear-gradient(135deg, #2ecc71, #3498db);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2.5rem;
-            margin: 0 auto 1rem;
-        }
-        
-        .team-member h3 {
-            color: #2c3e50;
-            margin-bottom: 0.5rem;
-        }
-        
-        .team-member p {
-            color: #95a5a6;
-            font-size: 0.9rem;
-        }
-    </style>
 </head>
 <body>
     <!-- Navigation Bar -->
     <nav class="navbar">
         <div class="navbar-container">
             <div class="navbar-logo">
-                <h1>🌾 FarmDialogue Ghana</h1>
+                <img src="logo_farm.jpg" alt="FarmDialogue Logo" style="height: 50px; margin-right: 0.75rem; display: inline-block; vertical-align: middle;">
+                <h1 style="display: inline-block; margin: 0;">FarmDialogue</h1>
             </div>
             <ul class="nav-menu">
                 <li><a href="index.html" class="nav-link">Home</a></li>
                 <li><a href="products.html" class="nav-link">Products</a></li>
                 <li><a href="learning.html" class="nav-link">Learn</a></li>
                 <li><a href="about.html" class="nav-link active">About</a></li>
-                <li><a href="login.html" class="nav-link btn-login">Login</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+                <li><a href="login.html" class="btn-login">Sign In</a></li>
             </ul>
+            <button class="menu-toggle">☰</button>
         </div>
     </nav>
 
-    <!-- About Section -->
-    <div class="about-container">
-        <div class="about-hero">
-            <h1>About FarmDialogue Ghana</h1>
-            <p>Connecting farmers, customers, vendors, and gardening enthusiasts across Ghana through a unified digital platform</p>
+    <!-- Page Header -->
+    <section class="section" style="padding-top: 8rem;">
+        <div class="section-header">
+            <h2 class="section-title">About FarmDialogue</h2>
+            <p class="section-description">Building a thriving agricultural ecosystem where farmers earn fair prices and consumers get authentic, quality products.</p>
         </div>
+    </section>
 
-        <!-- Mission Section -->
-        <div class="about-section">
-            <h2>Our Mission</h2>
-            <p>FarmDialogue Ghana aims to revolutionize the agricultural ecosystem by creating a digital bridge between farmers, gardening enthusiasts, equipment vendors, and consumers across Ghana. We believe that technology should empower Ghanaian agricultural communities and make fresh, quality produce more accessible to everyone in the nation.</p>
-        </div>
+    <!-- Mission Section -->
+    <section class="section" style="background: linear-gradient(135deg, rgba(29, 124, 58, 0.05) 0%, rgba(242, 112, 156, 0.05) 100%);">
+        <div style="max-width: 900px; margin: 0 auto;">
+            <div class="section-header">
+                <h3 class="section-title" style="font-size: 2.2rem;">Our Mission</h3>
+            </div>
+            <p style="font-size: 1.1rem; line-height: 1.8; color: var(--text-dark); margin-bottom: 2rem;">
+                To revolutionize agriculture across Africa by creating direct connections between farmers and buyers, eliminating unnecessary intermediaries, and ensuring fair prices for all. We believe in sustainable farming practices, economic empowerment for rural communities, and providing citizens with access to fresh, quality agricultural products.
+            </p>
 
-        <!-- Vision & Values -->
-        <div class="about-section">
-            <h2>Our Vision & Values</h2>
-            <div class="about-grid">
-                <div class="about-card">
-                    <h3>🌱 Sustainability</h3>
-                    <p>Promoting sustainable farming practices and environmental responsibility</p>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <img src="apple.png" alt="Vision" style="width: 120px; height: 120px; border-radius: 50%; margin: 0 auto 1rem;">
+                    <h3>Our Vision</h3>
+                    <p>An Africa where every farmer has access to fair markets and every consumer has access to fresh, quality agricultural products from ethical sources.</p>
                 </div>
-                <div class="about-card">
-                    <h3>🤝 Community</h3>
-                    <p>Building a supportive community of farmers and agricultural enthusiasts</p>
+
+                <div class="feature-card">
+                    <img src="apple.png" alt="Values" style="width: 120px; height: 120px; border-radius: 50%; margin: 0 auto 1rem;">
+                    <h3>Our Values</h3>
+                    <p>Transparency, sustainability, community empowerment, and fair trade are at the core of everything we do.</p>
                 </div>
-                <div class="about-card">
-                    <h3>📚 Education</h3>
-                    <p>Providing accessible knowledge and resources for all skill levels</p>
-                </div>
-                <div class="about-card">
-                    <h3>🔍 Transparency</h3>
-                    <p>Ensuring open communication and fair practices across the platform</p>
+
+                <div class="feature-card">
+                    <img src="apple.png" alt="Commitment" style="width: 120px; height: 120px; border-radius: 50%; margin: 0 auto 1rem;">
+                    <h3>Our Commitment</h3>
+                    <p>We are dedicated to serving farmers, buyers, and communities with integrity and excellence in all our operations.</p>
                 </div>
             </div>
         </div>
+    </section>
 
-        <!-- What We Do -->
-        <div class="about-section">
-            <h2>What We Do</h2>
-            <p>FarmDialogue provides a comprehensive platform that:</p>
-            <ul style="list-style: none; padding-left: 0;">
-                <li style="margin-bottom: 1rem; padding-left: 2rem;"><strong style="color: #2ecc71;">Connect Farmers with Customers:</strong> Enable direct sales of fresh produce from farmers to consumers</li>
-                <li style="margin-bottom: 1rem; padding-left: 2rem;"><strong style="color: #2ecc71;">Link with Vendors:</strong> Connect farmers with equipment and supply vendors</li>
-                <li style="margin-bottom: 1rem; padding-left: 2rem;"><strong style="color: #2ecc71;">Education & Learning:</strong> Offer tutorials, guides, and resources for aspiring gardeners</li>
-                <li style="margin-bottom: 1rem; padding-left: 2rem;"><strong style="color: #2ecc71;">Community Support:</strong> Facilitate communication and collaboration within the agricultural community</li>
-            </ul>
-        </div>
-
-        <!-- Team Section -->
-        <div class="about-section">
-            <h2>Our Team</h2>
-            <p style="margin-bottom: 2rem;">FarmDialogue is built by a dedicated team of software engineers and agricultural enthusiasts</p>
-            <div class="team-section">
-                <div class="team-member">
-                    <div class="member-avatar">👨‍💼</div>
-                    <h3>Team Member 1</h3>
-                    <p>Scrum Master</p>
-                </div>
-                <div class="team-member">
-                    <div class="member-avatar">👩‍💼</div>
-                    <h3>Team Member 2</h3>
-                    <p>Product Owner</p>
-                </div>
-                <div class="team-member">
-                    <div class="member-avatar">👨‍💻</div>
-                    <h3>Team Member 3</h3>
-                    <p>Developer</p>
-                </div>
-                <div class="team-member">
-                    <div class="member-avatar">👩‍💻</div>
-                    <h3>Team Member 4</h3>
-                    <p>Developer</p>
-                </div>
+    <!-- Stats Section -->
+    <section class="section">
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-value">5,000+</div>
+                <div class="stat-label">Registered Farmers</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">50,000+</div>
+                <div class="stat-label">Active Products</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">100,000+</div>
+                <div class="stat-label">Happy Customers</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">₵50M+</div>
+                <div class="stat-label">Value Traded</div>
             </div>
         </div>
+    </section>
 
-        <!-- Contact Section -->
-        <div class="about-section">
-            <h2>Get In Touch</h2>
-            <p>Have questions or suggestions? We'd love to hear from you!</p>
-            <ul style="list-style: none; padding-left: 0;">
-                <li style="margin-bottom: 0.5rem;"><strong>Email:</strong> support@farmdialogue.com.gh</li>
-                <li style="margin-bottom: 0.5rem;"><strong>Phone:</strong> +233 (0) 123-4567</li>
-                <li><strong>Address:</strong> Agricultural Innovation Hub, Accra, Ghana</li>
-            </ul>
+    <!-- Team Section -->
+    <section class="section" style="background: linear-gradient(135deg, rgba(29, 124, 58, 0.05) 0%, rgba(242, 112, 156, 0.05) 100%);">
+        <div class="section-header">
+            <h2 class="section-title">Our Team</h2>
+            <p class="section-description">Meet the passionate individuals dedicated to transforming agriculture across Africa.</p>
         </div>
-    </div>
+
+        <div class="features-grid">
+            <div class="feature-card">
+                <img src="apple.png" alt="Athanase" style="width: 120px; height: 120px; border-radius: 50%; margin: 0 auto 1rem;">
+                <h3>Athanase</h3>
+                <p>Co-founder & CEO. Technology innovator focused on building scalable agricultural solutions that empower farmers.</p>
+                <p style="font-size: 0.9rem; color: var(--primary); margin-top: 1rem;">Founder & CEO</p>
+            </div>
+
+            <div class="feature-card">
+                <img src="apple.png" alt="Adelard" style="width: 120px; height: 120px; border-radius: 50%; margin: 0 auto 1rem;">
+                <h3>Adelard</h3>
+                <p>Co-founder & Operations Director. Expert in supply chain management and agricultural market dynamics across Africa.</p>
+                <p style="font-size: 0.9rem; color: var(--primary); margin-top: 1rem;">Operations Director</p>
+            </div>
+
+            <div class="feature-card">
+                <img src="apple.png" alt="Mambu" style="width: 120px; height: 120px; border-radius: 50%; margin: 0 auto 1rem;">
+                <h3>Mambu</h3>
+                <p>Technology Lead. Building robust systems and infrastructure to support farmers and traders on our platform.</p>
+                <p style="font-size: 0.9rem; color: var(--primary); margin-top: 1rem;">Tech Lead</p>
+            </div>
+
+            <div class="feature-card">
+                <img src="apple.png" alt="Ben" style="width: 120px; height: 120px; border-radius: 50%; margin: 0 auto 1rem;">
+                <h3>Ben</h3>
+                <p>Community Manager. Fostering connections between farmers, traders, and ensuring exceptional customer experiences daily.</p>
+                <p style="font-size: 0.9rem; color: var(--primary); margin-top: 1rem;">Community Manager</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section">
+        <div class="section-header">
+            <h2 class="section-title">Get in Touch</h2>
+            <p class="section-description">Have questions? We'd love to hear from you!</p>
+        </div>
+
+        <div style="max-width: 600px; margin: 0 auto; text-align: center;">
+            <div style="background: white; border-radius: 12px; padding: 2rem; border: 1px solid #e0e0e0;">
+                <p style="font-size: 1.1rem; color: var(--text-dark); margin-bottom: 1rem;">Email</p>
+                <p style="color: var(--primary); font-weight: 600; margin-bottom: 2rem;">hello@farmdialogue.com</p>
+
+                <p style="font-size: 1.1rem; color: var(--text-dark); margin-bottom: 1rem;">Phone</p>
+                <p style="color: var(--primary); font-weight: 600; margin-bottom: 2rem;">+233 (0) 123 456 789</p>
+
+                <p style="font-size: 1.1rem; color: var(--text-dark); margin-bottom: 1rem;">Location</p>
+                <p style="color: var(--text-light);">Accra, Ghana</p>
+            </div>
+
+            <div class="hero-buttons" style="justify-content: center; margin-top: 2rem;">
+                <a href="contact.html" class="btn btn-primary">Send Message</a>
+            </div>
+        </div>
+    </section>
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-section">
-                <div class="footer-brand">
-                    <h3>🌾 FarmDialogue Ghana</h3>
-                    <p>Connecting farmers, gardeners, vendors, and customers across Ghana. Building a stronger agricultural community through direct trade and knowledge sharing.</p>
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-section footer-brand">
+                    <h2>FarmDialogue</h2>
+                    <p>Empowering farmers, connecting communities, and building sustainable agriculture across Africa.</p>
+                    <div class="social-links">
+                        <a href="#" title="Facebook">f</a>
+                        <a href="#" title="Twitter">𝕏</a>
+                        <a href="#" title="Instagram">📷</a>
+                        <a href="#" title="LinkedIn">in</a>
+                    </div>
                 </div>
-                <div class="footer-links">
-                    <h4>Company</h4>
-                    <a href="index.html">Home</a>
-                    <a href="about.html">About Us</a>
-                    <a href="learning.html">Learning Hub</a>
-                    <a href="products.html">Products</a>
+                <div class="footer-section">
+                    <h3>Company</h3>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Press</a></li>
+                    </ul>
                 </div>
-                <div class="footer-links">
-                    <h4>Support</h4>
-                    <a href="#">Help Center</a>
-                    <a href="#">Contact Us</a>
-                    <a href="#">FAQ</a>
-                    <a href="#">Feedback</a>
+                <div class="footer-section">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
                 </div>
-                <div class="footer-links">
-                    <h4>Legal</h4>
-                    <a href="#">Privacy Policy</a>
-                    <a href="#">Terms of Service</a>
-                    <a href="#">Cookie Policy</a>
-                    <a href="#">Security</a>
+                <div class="footer-section">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="learning.html">Learning Hub</a></li>
+                        <li><a href="#">Farmer Guide</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Community</a></li>
+                    </ul>
                 </div>
             </div>
+
             <div class="footer-bottom">
-                <p>&copy; 2026 FarmDialogue Ghana. All rights reserved. | Building Ghana's agricultural future, one connection at a time.</p>
+                <p>&copy; 2026 FarmDialogue. All rights reserved. | Connecting Africa's Agricultural Future</p>
             </div>
         </div>
     </footer>

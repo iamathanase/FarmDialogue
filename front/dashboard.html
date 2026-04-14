@@ -5,304 +5,528 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard - FarmDialogue</title>
     <link rel="stylesheet" href="styles.css">
-    <style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="navbar-logo">
+                <h1>FarmDialogue</h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="learning.html" class="nav-link">Learning</a></li>
+                <li><a href="products.html" class="nav-link">Products</a></li>
+                <li><a href="dashboard.html" class="nav-link active">Dashboard</a></li>
+                <li><button onclick="logout()" class="btn-login" style="padding: 0.5rem 1rem; font-size: 0.85rem;">Logout</button></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Dashboard Container -->
+    <div class="dashboard-container">
+        <div class="dashboard-main">
+            <!-- Welcome Section -->
+            <div class="dashboard-header">
+                <div class="welcome-section">
+                    <h2>Welcome back, Farmer</h2>
+                    <p>Here's your farming summary for today</p>
+                </div>
+            </div>
+
+            <!-- Monitoring Cards Grid -->
+            <div class="monitoring-grid">
+                <div class="monitor-card">
+                    <h3>Monthly Sales</h3>
+                    <div class="stat-value">₵2,450</div>
+                    <div class="stat-change">↑ 12% from last month</div>
+                </div>
+
+                <div class="monitor-card">
+                    <h3>Total Orders</h3>
+                    <div class="stat-value">47</div>
+                    <div class="stat-change">↑ 8 new orders</div>
+                </div>
+
+                <div class="monitor-card">
+                    <h3>Average Rating</h3>
+                    <div class="stat-value">4.8★</div>
+                    <div class="stat-change">156 reviews</div>
+                </div>
+
+                <div class="monitor-card">
+                    <h3>Active Listings</h3>
+                    <div class="stat-value">12</div>
+                    <div class="stat-change">↑ 3 new this week</div>
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="section" style="padding: 2rem 0; background: white; border-radius: 12px; margin-bottom: 2rem; border: 1px solid var(--border-light);">
+                <h3 style="font-size: 1.25rem; font-weight: 700; color: var(--text-dark); margin-bottom: 1.5rem;">Quick Actions</h3>
+                <div class="features-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
+                    <button class="btn btn-primary" style="justify-content: center; width: 100%; padding: 1rem;">
+                        Add Listing
+                    </button>
+                    <button class="btn btn-secondary" style="justify-content: center; width: 100%; padding: 1rem;">
+                        View Analytics
+                    </button>
+                    <button class="btn btn-secondary" style="justify-content: center; width: 100%; padding: 1rem;">
+                        Manage Orders
+                    </button>
+                    <button class="btn btn-secondary" style="justify-content: center; width: 100%; padding: 1rem;">
+                        Settings
+                    </button>
+                </div>
+            </div>
+
+            <!-- Recent Activity Table -->
+            <div style="background: white; border-radius: 12px; border: 1px solid var(--border-light); overflow: hidden; margin-bottom: 3rem;">
+                <div style="padding: 2rem; background: var(--bg-light); border-bottom: 1px solid var(--border-light);">
+                    <h3 style="font-size: 1.25rem; font-weight: 700; color: var(--text-dark); margin: 0;">Recent Orders</h3>
+                </div>
+                <div class="table-container" style="box-shadow: none; border: none;">
+                    <table>
+                        <thead>
+                            <tr style="background: var(--bg-slate-50);">
+                                <th>Order ID</th>
+                                <th>Product</th>
+                                <th>Quantity</th>
+                                <th>Price</th>
+                                <th>Date</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>#ORD-001</td>
+                                <td>Tomatoes</td>
+                                <td>50 kg</td>
+                                <td>₵120</td>
+                                <td>Mar 15, 2024</td>
+                                <td><span class="status-badge status-delivered">Delivered</span></td>
+                            </tr>
+                            <tr>
+                                <td>#ORD-002</td>
+                                <td>Maize</td>
+                                <td>30 kg</td>
+                                <td>₵96</td>
+                                <td>Mar 14, 2024</td>
+                                <td><span class="status-badge status-delivered">Delivered</span></td>
+                            </tr>
+                            <tr>
+                                <td>#ORD-003</td>
+                                <td>Leafy Greens</td>
+                                <td>20 bags</td>
+                                <td>₵50</td>
+                                <td>Mar 13, 2024</td>
+                                <td><span class="status-badge status-pending">Pending</span></td>
+                            </tr>
+                            <tr>
+                                <td>#ORD-004</td>
+                                <td>Chillies</td>
+                                <td>15 kg</td>
+                                <td>₵90</td>
+                                <td>Mar 12, 2024</td>
+                                <td><span class="status-badge status-processing">Processing</span></td>
+                            </tr>
+                            <tr>
+                                <td>#ORD-005</td>
+                                <td>Plantains</td>
+                                <td>40 kg</td>
+                                <td>₵150</td>
+                                <td>Mar 11, 2024</td>
+                                <td><span class="status-badge status-delivered">Delivered</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h3>About</h3>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Our Mission</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Cookies</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 FarmDialogue Ghana. Empowering African Farmers.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Dashboard initialization
+        document.addEventListener('DOMContentLoaded', function() {
+            const authStatus = checkAuthStatus();
+            const isLocalhost = location.hostname === 'localhost' || location.hostname === '127.0.0.1';
+            const isDemoMode = new URLSearchParams(location.search).get('demo') === 'true';
+            
+            if (!authStatus.isAuthenticated && !isLocalhost && !isDemoMode) {
+                window.location.href = 'login.html';
+            }
+            
+            if (isLocalhost && !authStatus.isAuthenticated) {
+                localStorage.setItem('authToken', 'demo-token');
+                localStorage.setItem('userRole', 'farmer');
+                localStorage.setItem('userId', '1');
+                location.reload();
+            }
+        });
+    </script>
+</body>
+</html>
         /* Dashboard Specific Styles */
-        body {
-            padding-top: 70px;
-            background-color: #f0f4f8;
+        .dashboard-container {
+            padding: 0;
+            margin: 0;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #f5f9f5 0%, #e8f2e8 100%);
         }
 
-        .dashboard-container {
-            max-width: 1400px;
+        .dashboard-main {
+            padding-top: 70px;
+            padding-right: 20px;
+            padding-left: 20px;
+            padding-bottom: 40px;
+            max-width: 1600px;
             margin: 0 auto;
-            padding: 2rem;
         }
 
         .dashboard-header {
-            background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
-            color: white;
-            padding: 3rem 2.5rem;
-            border-radius: 12px;
-            margin-bottom: 3rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 8px 24px rgba(46, 204, 113, 0.25);
+            margin-bottom: 2rem;
+            animation: fadeInDown 0.6s ease-out;
         }
 
-        .dashboard-header-left h1 {
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .welcome-section {
+            color: #2c3e50;
+        }
+
+        .welcome-section h2 {
             font-size: 2rem;
-            font-weight: 700;
+            font-weight: 800;
             margin-bottom: 0.5rem;
+            color: #1d7c3a;
         }
 
-        .dashboard-header-left p {
-            font-size: 0.95rem;
-            opacity: 0.95;
+        .welcome-section p {
+            font-size: 1rem;
+            color: #7f8c8d;
         }
 
-        .user-info {
-            text-align: right;
-            background: rgba(255, 255, 255, 0.15);
-            padding: 1rem 1.5rem;
-            border-radius: 8px;
-            backdrop-filter: blur(5px);
-        }
-
-        .user-info p {
-            margin: 0;
-            font-weight: 600;
-            font-size: 0.95rem;
-        }
-
-        .user-info small {
-            display: block;
-            opacity: 0.85;
-            font-size: 0.85rem;
-            margin-top: 0.3rem;
-        }
-
-        .stats-grid {
+        /* Monitoring Cards Grid */
+        .monitoring-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 1.5rem;
             margin-bottom: 3rem;
         }
 
-        .stat-card {
+        .monitor-card {
             background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-            border: 1px solid #f0f4f8;
-            transition: all 0.3s ease;
-            cursor: default;
+            border-radius: 16px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border-left: 4px solid #1d7c3a;
+            position: relative;
+            overflow: hidden;
+            animation: slideInUp 0.6s ease-out;
         }
 
-        .stat-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
-            border-color: #e0e8f0;
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
-        .stat-label {
-            color: #7a8fa6;
-            font-size: 0.85rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+        .monitor-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(46, 204, 113, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .monitor-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(29, 124, 58, 0.15);
+        }
+
+        .monitor-card.sales { border-left-color: #1d7c3a; }
+        .monitor-card.orders { border-left-color: #f39c12; }
+        .monitor-card.rating { border-left-color: #3498db; }
+        .monitor-card.revenue { border-left-color: #27ae60; }
+
+        .card-icon {
+            font-size: 2.5rem;
             margin-bottom: 0.8rem;
+            display: inline-block;
+            background: linear-gradient(135deg, rgba(29, 124, 58, 0.1) 0%, rgba(46, 204, 113, 0.1) 100%);
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s ease;
         }
 
-        .stat-value {
-            font-size: 2.2rem;
-            font-weight: 700;
-            color: #2ecc71;
+        .monitor-card:hover .card-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .card-label {
+            font-size: 0.85rem;
+            color: #95a5a6;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
             margin-bottom: 0.5rem;
         }
 
-        .stat-change {
-            font-size: 0.85rem;
-            color: #7a8fa6;
+        .card-value {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #1d7c3a;
+            margin-bottom: 0.8rem;
+            font-family: 'Courier New', monospace;
         }
 
-        .dashboard-main {
-            display: grid;
-            grid-template-columns: 2.5fr 1fr;
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-
-        .card {
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-            border: 1px solid #f0f4f8;
-            padding: 2rem;
-        }
-
-        .card-header {
+        .card-meta {
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            margin-bottom: 1.5rem;
-            padding-bottom: 1rem;
-            border-bottom: 2px solid #f0f4f8;
-        }
-
-        .card-title {
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: #2c3e50;
-        }
-
-        .card-link {
-            color: #2ecc71;
-            text-decoration: none;
+            justify-content: space-between;
             font-size: 0.9rem;
+            color: #7f8c8d;
+        }
+
+        .card-trend {
             font-weight: 600;
-            transition: all 0.3s ease;
-        }
-
-        .card-link:hover {
-            color: #27ae60;
-            transform: translateX(4px);
-        }
-
-        .table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 1rem;
-        }
-
-        .table thead th {
-            background-color: #f8fafb;
-            padding: 1rem;
-            text-align: left;
-            font-weight: 600;
-            color: #5a6f87;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            border-bottom: 2px solid #e8ecf1;
-        }
-
-        .table tbody td {
-            padding: 1.2rem 1rem;
-            border-bottom: 1px solid #f0f4f8;
-            color: #3a4a5c;
-            font-size: 0.95rem;
-        }
-
-        .table tbody tr:hover {
-            background-color: #f8fafb;
-        }
-
-        .badge {
-            display: inline-block;
-            padding: 0.4rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.3px;
-        }
-
-        .badge-completed {
-            background-color: #d4edda;
-            color: #155724;
-        }
-
-        .badge-pending {
-            background-color: #fff3cd;
-            color: #856404;
-        }
-
-        .badge-shipped {
-            background-color: #cfe4fd;
-            color: #004085;
-        }
-
-        .quick-actions {
             display: flex;
-            flex-direction: column;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .trend-up {
+            color: #27ae60;
+        }
+
+        .trend-down {
+            color: #e74c3c;
+        }
+
+        /* Charts & Analytics Section */
+        .analytics-section {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            margin-bottom: 2rem;
+            animation: fadeInUp 0.8s ease-out 0.2s backwards;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1d7c3a;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
             gap: 0.8rem;
         }
 
-        .action-btn {
-            display: block;
+        .section-title::before {
+            content: '';
+            width: 4px;
+            height: 24px;
+            background: linear-gradient(135deg, #1d7c3a, #2ecc71);
+            border-radius: 2px;
+        }
+
+        /* Activity Table */
+        .activities-section {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            animation: fadeInUp 0.8s ease-out 0.3s backwards;
+        }
+
+        .table-responsive {
+            overflow-x: auto;
+        }
+
+        .activities-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .activities-table thead {
+            background: linear-gradient(135deg, rgba(29, 124, 58, 0.05) 0%, rgba(46, 204, 113, 0.05) 100%);
+        }
+
+        .activities-table th {
             padding: 1rem;
-            background-color: #f8fafb;
-            border: 1px solid #e8ecf1;
-            border-radius: 8px;
-            text-decoration: none;
+            text-align: left;
+            font-weight: 700;
+            color: #1d7c3a;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            border-bottom: 2px solid #ecf0f1;
+        }
+
+        .activities-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #ecf0f1;
             color: #2c3e50;
-            font-weight: 500;
+        }
+
+        .activities-table tbody tr {
+            transition: all 0.3s ease;
+        }
+
+        .activities-table tbody tr:hover {
+            background: linear-gradient(135deg, rgba(46, 204, 113, 0.05) 0%, rgba(29, 124, 58, 0.05) 100%);
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: capitalize;
+        }
+
+        .status-delivered {
+            background: rgba(39, 174, 96, 0.15);
+            color: #27ae60;
+        }
+
+        .status-pending {
+            background: rgba(243, 156, 18, 0.15);
+            color: #f39c12;
+        }
+
+        .status-processing {
+            background: rgba(52, 152, 219, 0.15);
+            color: #3498db;
+        }
+
+        /* Quick Actions */
+        .quick-actions {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .action-btn {
+            background: linear-gradient(135deg, #1d7c3a 0%, #0d4a1f 100%);
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
             transition: all 0.3s ease;
             text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 0.95rem;
         }
 
         .action-btn:hover {
-            background-color: #2ecc71;
-            color: white;
-            border-color: #2ecc71;
-            transform: translateX(4px);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(29, 124, 58, 0.3);
         }
 
+        .action-btn.secondary {
+            background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%);
+        }
+
+        /* Empty State */
         .empty-state {
             text-align: center;
-            padding: 2rem;
-            color: #7a8fa6;
+            padding: 3rem 2rem;
         }
 
         .empty-state-icon {
             font-size: 3rem;
             margin-bottom: 1rem;
-            opacity: 0.5;
         }
 
-        @media (max-width: 1024px) {
+        .empty-state p {
+            color: #95a5a6;
+            font-size: 1rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .monitoring-grid {
+                grid-template-columns: 1fr;
+            }
+
             .dashboard-main {
-                grid-template-columns: 1fr;
+                padding-top: 80px;
+                padding-right: 15px;
+                padding-left: 15px;
             }
 
-            .dashboard-header {
-                flex-direction: column;
-                text-align: center;
-                gap: 1.5rem;
+            .card-value {
+                font-size: 2rem;
             }
 
-            .user-info {
-                text-align: center;
-            }
-        }
-
-        @media (max-width: 640px) {
-            .dashboard-container {
-                padding: 1rem;
-            }
-
-            .stats-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .dashboard-header {
-                padding: 2rem 1.5rem;
-            }
-
-            .card {
+            .analytics-section {
                 padding: 1.5rem;
-            }
-
-            .table thead, .table tbody, .table th, .table td, .table tr {
-                display: block;
-            }
-
-            .table thead {
-                display: none;
-            }
-
-            .table tbody tr {
-                margin-bottom: 1rem;
-                background-color: #f8fafb;
-                border: 1px solid #e8ecf1;
-                border-radius: 8px;
-            }
-
-            .table tbody td {
-                display: grid;
-                grid-template-columns: 100px 1fr;
-                column-gap: 1rem;
-                padding: 0.8rem;
-                border: none;
-            }
-
-            .table tbody td:before {
-                content: attr(data-label);
-                font-weight: 600;
-                color: #5a6f87;
-                text-transform: uppercase;
-                font-size: 0.8rem;
             }
         }
     </style>
@@ -312,179 +536,247 @@
     <nav class="navbar">
         <div class="navbar-container">
             <div class="navbar-logo">
-                <h1>🌾 FarmDialogue Ghana</h1>
+                <img src="logo_farm.jpg" alt="FarmDialogue Logo" style="height: 50px; margin-right: 0.75rem; display: inline-block; vertical-align: middle;">
+                <h1 style="display: inline-block; margin: 0;">FarmDialogue</h1>
             </div>
             <ul class="nav-menu">
                 <li><a href="index.html" class="nav-link">Home</a></li>
                 <li><a href="products.html" class="nav-link">Products</a></li>
                 <li><a href="learning.html" class="nav-link">Learn</a></li>
                 <li><a href="about.html" class="nav-link">About</a></li>
-                <li><a href="dashboard.html" class="nav-link active">Dashboard</a></li>
-                <li><a href="javascript:logout()" class="nav-link btn-login">Logout</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+                <li><a href="#" class="btn-login" onclick="logout()">Sign Out</a></li>
             </ul>
+            <button class="menu-toggle">☰</button>
         </div>
     </nav>
 
-    <!-- Dashboard Container -->
     <div class="dashboard-container">
-        <!-- Dashboard Header -->
-        <div class="dashboard-header">
-            <div class="dashboard-header-left">
-                <h1>Welcome to Your Dashboard</h1>
-                <p>Manage your FarmDialogue Ghana account and activities</p>
-            </div>
-            <div class="user-info">
-                <p id="welcomeUser">User Account</p>
-                <small>✓ Logged in</small>
-            </div>
-        </div>
-
-        <!-- Statistics Grid -->
-        <div class="stats-grid">
-            <div class="stat-card">
-                <div class="stat-label">Active Listings</div>
-                <div class="stat-value">5</div>
-                <div class="stat-change">↑ 2 new this month</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-label">Total Orders</div>
-                <div class="stat-value">12</div>
-                <div class="stat-change">3 pending fulfillment</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-label">Messages</div>
-                <div class="stat-value">8</div>
-                <div class="stat-change">2 unread messages</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-label">Customer Rating</div>
-                <div class="stat-value">4.5⭐</div>
-                <div class="stat-change">Based on 23 reviews</div>
-            </div>
-        </div>
-
-        <!-- Main Dashboard Content -->
-        <div class="dashboard-main">
-            <!-- Recent Orders -->
-            <div class="card">
-                <div class="card-header">
-                    <h2 class="card-title">📦 Recent Orders</h2>
-                    <a href="#" class="card-link">View All →</a>
+        <main class="dashboard-main">
+            <!-- Welcome Section -->
+            <div class="dashboard-header">
+                <div class="welcome-section">
+                    <h2>Welcome back, Farmer! 👋</h2>
+                    <p>Here's what's happening with your farm today</p>
                 </div>
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>Order ID</th>
-                            <th>Product</th>
-                            <th>Status</th>
-                            <th>Date</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td data-label="Order ID">#001</td>
-                            <td data-label="Product">Fresh Tomatoes (Ghana)</td>
-                            <td data-label="Status"><span class="badge badge-completed">Delivered</span></td>
-                            <td data-label="Date">2026-03-20</td>
-                        </tr>
-                        <tr>
-                            <td data-label="Order ID">#002</td>
-                            <td data-label="Product">Organic Carrots (Ghana)</td>
-                            <td data-label="Status"><span class="badge badge-pending">Pending</span></td>
-                            <td data-label="Date">2026-03-22</td>
-                        </tr>
-                        <tr>
-                            <td data-label="Order ID">#003</td>
-                            <td data-label="Product">Garden Tool Set</td>
-                            <td data-label="Status"><span class="badge badge-shipped">Shipped</span></td>
-                            <td data-label="Date">2026-03-23</td>
-                        </tr>
-                    </tbody>
-                </table>
             </div>
 
-            <!-- Sidebar -->
-            <div>
-                <!-- Quick Actions -->
-                <div class="card" style="margin-bottom: 1.5rem;">
-                    <div class="card-header" style="border-bottom: none; margin-bottom: 0;">
-                        <h3 class="card-title">⚡ Quick Actions</h3>
-                    </div>
-                    <div class="quick-actions" style="margin-top: 1rem;">
-                        <a href="products.html" class="action-btn">🛍️ Browse Products</a>
-                        <a href="#" class="action-btn">📝 Create Listing</a>
-                        <a href="#" class="action-btn">💬 View Messages</a>
-                        <a href="#" class="action-btn">👤 My Profile</a>
+            <!-- Monitoring Cards -->
+            <div class="monitoring-grid">
+                <div class="monitor-card sales">
+                    <div class="card-icon">📊</div>
+                    <div class="card-label">This Month</div>
+                    <div class="card-value" id="monthlySales">₵2,450</div>
+                    <div class="card-meta">
+                        <span class="card-trend trend-up">↑ 12.5% from last month</span>
                     </div>
                 </div>
 
-                <!-- Recent Messages -->
-                <div class="card">
-                    <div class="card-header" style="border-bottom: none; margin-bottom: 0;">
-                        <h3 class="card-title">💬 Messages</h3>
+                <div class="monitor-card orders">
+                    <div class="card-icon">📦</div>
+                    <div class="card-label">Total Orders</div>
+                    <div class="card-value" id="totalOrders">47</div>
+                    <div class="card-meta">
+                        <span class="card-trend trend-up">↑ 8 from last week</span>
                     </div>
-                    <div class="empty-state">
-                        <div class="empty-state-icon">📭</div>
-                        <p>No new messages</p>
+                </div>
+
+                <div class="monitor-card rating">
+                    <div class="card-icon">⭐</div>
+                    <div class="card-label">Average Rating</div>
+                    <div class="card-value">4.8</div>
+                    <div class="card-meta">
+                        <span style="color: #f39c12;">Based on 156 reviews</span>
+                    </div>
+                </div>
+
+                <div class="monitor-card revenue">
+                    <div class="card-icon">💰</div>
+                    <div class="card-label">Active Listings</div>
+                    <div class="card-value" id="activeListings">12</div>
+                    <div class="card-meta">
+                        <span class="card-trend trend-up">↑ 3 new this week</span>
                     </div>
                 </div>
             </div>
-        </div>
+
+            <!-- Analytics Section -->
+            <div class="analytics-section">
+                <h3 class="section-title">Sales Performance</h3>
+                <div id="chartContainer" style="height: 300px; display: flex; align-items: center; justify-content: center; color: #95a5a6; font-size: 1rem;">
+                    <div style="text-align: center;">
+                        <p>📈 Sales chart visualization</p>
+                        <p style="font-size: 0.9rem; margin-top: 0.5rem;">Integration with your sales data will appear here</p>
+                    </div>
+                </div>
+                <div class="quick-actions">
+                    <button class="action-btn" onclick="addNewListing()">+ Add New Listing</button>
+                    <button class="action-btn secondary" onclick="viewAnalytics()">View Analytics</button>
+                    <button class="action-btn" onclick="manageOrders()">Manage Orders</button>
+                </div>
+            </div>
+
+            <!-- Recent Activity -->
+            <div class="activities-section">
+                <h3 class="section-title">Recent Activity</h3>
+                <div class="table-responsive">
+                    <table class="activities-table">
+                        <thead>
+                            <tr>
+                                <th>Order ID</th>
+                                <th>Product</th>
+                                <th>Quantity</th>
+                                <th>Amount</th>
+                                <th>Date</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>#ORD-001</td>
+                                <td>Fresh Maize</td>
+                                <td>50 kg</td>
+                                <td>₵225</td>
+                                <td>Mar 15, 2024</td>
+                                <td><span class="status-badge status-delivered">Delivered</span></td>
+                            </tr>
+                            <tr>
+                                <td>#ORD-002</td>
+                                <td>Tomatoes</td>
+                                <td>30 kg</td>
+                                <td>₵96</td>
+                                <td>Mar 14, 2024</td>
+                                <td><span class="status-badge status-delivered">Delivered</span></td>
+                            </tr>
+                            <tr>
+                                <td>#ORD-003</td>
+                                <td>Leafy Greens</td>
+                                <td>20 bags</td>
+                                <td>₵50</td>
+                                <td>Mar 13, 2024</td>
+                                <td><span class="status-badge status-pending">Pending</span></td>
+                            </tr>
+                            <tr>
+                                <td>#ORD-004</td>
+                                <td>Chillies</td>
+                                <td>15 kg</td>
+                                <td>₵90</td>
+                                <td>Mar 12, 2024</td>
+                                <td><span class="status-badge status-processing">Processing</span></td>
+                            </tr>
+                            <tr>
+                                <td>#ORD-005</td>
+                                <td>Plantains</td>
+                                <td>40 kg</td>
+                                <td>₵150</td>
+                                <td>Mar 11, 2024</td>
+                                <td><span class="status-badge status-delivered">Delivered</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
     </div>
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-section">
-                <div class="footer-brand">
-                    <h3>🌾 FarmDialogue Ghana</h3>
-                    <p>Connecting farmers, gardeners, vendors, and customers across Ghana. Building a stronger agricultural community through direct trade and knowledge sharing.</p>
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-section footer-brand">
+                    <h2>FarmDialogue</h2>
+                    <p>Empowering farmers, connecting communities, and building sustainable agriculture across Africa.</p>
+                    <div class="social-links">
+                        <a href="#" title="Facebook">f</a>
+                        <a href="#" title="Twitter">𝕏</a>
+                        <a href="#" title="Instagram">📷</a>
+                        <a href="#" title="LinkedIn">in</a>
+                    </div>
                 </div>
-                <div class="footer-links">
-                    <h4>Company</h4>
-                    <a href="index.html">Home</a>
-                    <a href="about.html">About Us</a>
-                    <a href="learning.html">Learning Hub</a>
-                    <a href="products.html">Products</a>
+                <div class="footer-section">
+                    <h3>Company</h3>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Press</a></li>
+                    </ul>
                 </div>
-                <div class="footer-links">
-                    <h4>Support</h4>
-                    <a href="#">Help Center</a>
-                    <a href="#">Contact Us</a>
-                    <a href="#">FAQ</a>
-                    <a href="#">Feedback</a>
+                <div class="footer-section">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
                 </div>
-                <div class="footer-links">
-                    <h4>Legal</h4>
-                    <a href="#">Privacy Policy</a>
-                    <a href="#">Terms of Service</a>
-                    <a href="#">Cookie Policy</a>
-                    <a href="#">Security</a>
+                <div class="footer-section">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="learning.html">Learning Hub</a></li>
+                        <li><a href="#">Farmer Guide</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Community</a></li>
+                    </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2026 FarmDialogue Ghana. All rights reserved. | Building Ghana's agricultural future, one connection at a time.</p>
+                <p>&copy; 2026 FarmDialogue Ghana. All rights reserved. | Connecting Africa's Agricultural Future</p>
             </div>
         </div>
     </footer>
 
     <script src="script.js"></script>
     <script>
-        // Check authentication
+        // Dashboard animations and interactivity
         document.addEventListener('DOMContentLoaded', function() {
-            const auth = checkAuthStatus();
-            if (!auth.isAuthenticated) {
+            // Check authentication - allow demo mode if ?demo=true or on localhost
+            const authStatus = checkAuthStatus();
+            const isLocalhost = location.hostname === 'localhost' || location.hostname === '127.0.0.1';
+            const isDemoMode = new URLSearchParams(location.search).get('demo') === 'true';
+            
+            if (!authStatus.isAuthenticated && !isLocalhost && !isDemoMode) {
                 window.location.href = 'login.html';
-            } else {
-                document.getElementById('welcomeUser').textContent = 'Welcome back, ' + (auth.username || 'User') + '!';
             }
+            
+            // For demo purposes on localhost, set default auth if not present
+            if (isLocalhost && !authStatus.isAuthenticated) {
+                localStorage.setItem('authToken', 'demo-token');
+                localStorage.setItem('userRole', 'farmer');
+                localStorage.setItem('userId', '1');
+                location.reload();
+            }
+
+            // Animate card values on load
+            animateCardValues();
         });
 
-        // Logout function
+        function animateCardValues() {
+            const cards = document.querySelectorAll('.monitor-card');
+            cards.forEach((card, index) => {
+                card.style.animationDelay = `${index * 0.1}s`;
+            });
+        }
+
+        function addNewListing() {
+            alert('Creating new listing... (Feature coming soon)');
+        }
+
+        function viewAnalytics() {
+            alert('Opening analytics dashboard... (Feature coming soon)');
+        }
+
+        function manageOrders() {
+            alert('Opening orders management... (Feature coming soon)');
+        }
+
         function logout() {
-            if (confirm('Are you sure you want to logout?')) {
-                localStorage.removeItem('auth');
-                window.location.href = 'login.html';
+            if (confirm('Are you sure you want to sign out?')) {
+                localStorage.removeItem('authToken');
+                localStorage.removeItem('userRole');
+                localStorage.removeItem('userId');
+                window.location.href = 'index.html';
             }
         }
     </script>

@@ -56,10 +56,12 @@ function checkAuthStatus() {
 
 // Logout function
 function logout() {
-    localStorage.removeItem('authToken');
-    localStorage.removeItem('userRole');
-    localStorage.removeItem('userId');
-    window.location.href = 'index.html';
+    if (confirm('Are you sure you want to sign out?')) {
+        localStorage.removeItem('authToken');
+        localStorage.removeItem('userRole');
+        localStorage.removeItem('userId');
+        window.location.href = 'index.html';
+    }
 }
 
 // API call helper function
@@ -94,8 +96,8 @@ async function apiCall(endpoint, method = 'GET', data = null) {
     }
 }
 
-// Show notification message
-function showNotification(message, type = 'success') {
+// Enhanced notification system
+function showNotification(message, type = 'success', duration = 3000) {
     const notification = document.createElement('div');
     notification.className = `notification notification-${type}`;
     notification.textContent = message;
@@ -104,21 +106,90 @@ function showNotification(message, type = 'success') {
         top: 20px;
         right: 20px;
         padding: 1rem 2rem;
-        background-color: ${type === 'success' ? '#27ae60' : '#e74c3c'};
+        background-color: ${type === 'success' ? '#27ae60' : type === 'error' ? '#e74c3c' : '#f39c12'};
         color: white;
-        border-radius: 5px;
+        border-radius: 8px;
         z-index: 1000;
         animation: slideIn 0.3s ease;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        font-weight: 500;
     `;
     
     document.body.appendChild(notification);
     
     setTimeout(() => {
-        notification.remove();
-    }, 3000);
+        notification.style.animation = 'slideOut 0.3s ease';
+        setTimeout(() => {
+            notification.remove();
+        }, 300);
+    }, duration);
 }
 
-// Add CSS animation
+// Enhanced login handler
+async function handleLogin(event) {
+    event.preventDefault();
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+    const rememberMe = document.getElementById('rememberMe').checked;
+    
+    const submitButton = event.target.querySelector('button[type="submit"]');
+    const originalText = submitButton.textContent;
+    submitButton.textContent = 'Signing in...';
+    submitButton.disabled = true;
+    
+    try {
+        const response = await fetch('http://localhost/farmdialogue/back/api/auth/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ email, password })
+        });
+        
+        const data = await response.json();
+        
+        if (response.ok) {
+            // Store auth data
+            localStorage.setItem('authToken', data.token);
+            localStorage.setItem('userRole', data.userRole);
+            localStorage.setItem('userId', data.userId);
+            
+            if (rememberMe) {
+                localStorage.setItem('rememberEmail', email);
+            }
+            
+            showNotification('Login successful! Redirecting...', 'success', 2000);
+            
+            // Redirect after brief delay for notification
+            setTimeout(() => {
+                window.location.href = 'dashboard.html';
+            }, 500);
+        } else {
+            showNotification(data.message || 'Login failed. Please check your credentials.', 'error');
+            submitButton.textContent = originalText;
+            submitButton.disabled = false;
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        showNotification('Connection error. Please try again.', 'error');
+        submitButton.textContent = originalText;
+        submitButton.disabled = false;
+    }
+}
+
+// Pre-fill remembered email on login page
+function fillRememberedEmail() {
+    const loginPage = document.getElementById('email');
+    if (loginPage) {
+        const rememberedEmail = localStorage.getItem('rememberEmail');
+        if (rememberedEmail) {
+            loginPage.value = rememberedEmail;
+            document.getElementById('rememberMe').checked = true;
+        }
+    }
+}
+
+// Add CSS animations
 const style = document.createElement('style');
 style.textContent = `
     @keyframes slideIn {
@@ -131,11 +202,47 @@ style.textContent = `
             opacity: 1;
         }
     }
+
+    @keyframes slideOut {
+        from {
+            transform: translateX(0);
+            opacity: 1;
+        }
+        to {
+            transform: translateX(400px);
+            opacity: 0;
+        }
+    }
     
     .error {
         border-color: #e74c3c !important;
     }
+
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes fadeInDown {
+        from {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
 `;
 document.head.appendChild(style);
+
+// Call pre-fill on page load
+document.addEventListener('DOMContentLoaded', fillRememberedEmail);
 
 console.log('FarmDialogue Frontend Scripts Loaded');

@@ -1,14 +1,8 @@
 {
   "version": 2,
   "buildCommand": "true",
-  "outputDirectory": ".",
-  "public": false,
-  "rewrites": [
-    {
-      "source": "/:path((?!\\.)[^.]+)$",
-      "destination": "/index.html"
-    }
-  ]
+  "outputDirectory": "front",
+  "public": false
 }
 
 
