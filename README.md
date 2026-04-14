@@ -6,9 +6,18 @@ A comprehensive web application connecting farmers, customers, vendors, and gard
 
 ```
 farmdialogue/
-├── front/              # Frontend (HTML, CSS, JavaScript)
-├── back/               # Backend (PHP)
-└── database/           # Database (MySQL)
+├── front/                      # Frontend app
+│   ├── index.html              # Public entry page
+│   ├── pages/                  # All frontend pages
+│   └── assets/
+│       ├── css/                # Stylesheets
+│       ├── js/                 # Frontend scripts
+│       └── images/             # Image assets
+├── back/                       # Backend (PHP)
+├── docs/                       # Project documentation
+├── archive/legacy-root/        # Legacy backups (not runtime)
+├── package.json                # Node/Vercel project metadata
+└── vercel.json                 # Vercel deployment config
 ```
 
 ## Technology Stack
@@ -139,10 +148,10 @@ farmdialogue/
 
 ### Frontend (`front/`)
 - `index.html` - Homepage
-- `login.html` - Login page
-- `register.html` - Registration page
-- `styles.css` - Global styles
-- `script.js` - Global JavaScript functions
+- `pages/` - All route pages (`about`, `products`, `learning`, etc.)
+- `assets/css/styles.css` - Global styles
+- `assets/js/script.js` - Global JavaScript functions
+- `assets/images/` - Shared image assets
 
 ### Backend (`back/`)
 - `config.php` - Database and app configuration

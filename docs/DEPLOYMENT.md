@@ -172,5 +172,5 @@ const API_URL = process.env.API_BACKEND_URL;
 For deployment issues:
 1. Check Vercel build logs
 2. Review this guide's troubleshooting section
-3. See `SETUP_LOCAL.md` for local testing
+3. See `docs/SETUP_LOCAL.md` for local testing
 4. Check GitHub issues/discussions

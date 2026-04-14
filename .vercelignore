@@ -1,9 +1,8 @@
 .git
 .gitignore
 README.md
-SCRUM.md
-PROJECT_STATUS.md
-SETUP_LOCAL.md
+docs/
+archive/
 node_modules
 .env.local
 .env.*.local
