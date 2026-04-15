@@ -8,9 +8,12 @@ node_modules
 .env.*.local
 *.log
 
-# Ignore frontend folder
-front/
+# Ignore backup folders
 front-backup/
+learning-old.html
+dashboard-old.html
+styles-backup.css
+styles-domari.css
 
 # Ignore spec files
 .kiro/

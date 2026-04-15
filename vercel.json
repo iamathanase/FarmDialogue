@@ -15,36 +15,22 @@
   ],
   "routes": [
     {
-      "src": "/api/(.*)",
+      "src": "/api(.*)",
       "dest": "back/server.js"
     },
     {
-      "src": "/assets/(.*)",
-      "dest": "/front/assets/$1"
+      "src": "/assets(.*)",
+      "dest": "/front/assets$1"
     },
     {
-      "src": "/pages/(.*)\\.html",
-      "dest": "/front/pages/$1.html"
-    },
-    {
-      "src": "/(.*)\\.html",
-      "dest": "/front/$1.html"
-    },
-    {
-      "src": "/(.*)\\.css",
-      "dest": "/front/$1.css"
-    },
-    {
-      "src": "/(.*)\\.js",
-      "dest": "/front/$1.js"
+      "src": "/(.*\\.(?:html|css|js|json|png|jpg|jpeg|gif|svg|ico|webp|woff|woff2))",
+      "dest": "/front/$1"
     },
     {
       "src": "/(.*)",
-      "dest": "/front/index.html",
-      "methods": ["GET"]
+      "dest": "/front/index.html"
     }
   ],
-  "framework": "html",
   "env": {
     "NODE_ENV": "production"
   }
