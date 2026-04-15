@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farmer Dashboard - The Torch</title>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="stylesheet" href="../assets/css/dashboard.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="navbar-logo">
+                <img src="../assets/images/logo.png" alt="The Torch Logo" style="height: 50px; width: 50px; border-radius: 50%; margin-right: 0.75rem; display: inline-block; vertical-align: middle; object-fit: cover;">
+                <h1 style="display: inline-block; margin: 0;">The Torch</h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="../index.html" class="nav-link">Home</a></li>
+                <li><a href="farmer-dashboard.html" class="nav-link active">Farmer Dashboard</a></li>
+                <li><a href="contact.html" class="nav-link">Support</a></li>
+                <li><a href="#" class="btn-login">Log Out</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Dashboard Container -->
+    <div class="dashboard-container">
+        <div class="dashboard-sidebar">
+            <div class="sidebar-header">
+                <img src="../assets/images/team/4.jpg" alt="Farmer Avatar" class="sidebar-avatar">
+                <div class="sidebar-info">
+                    <h3>John Mutua</h3>
+                    <p>Farmer</p>
+                </div>
+            </div>
+            <nav class="sidebar-menu">
+                <a href="#overview" class="menu-item active" onclick="switchPage('overview', event)">
+                    <span class="icon">◆</span> Overview
+                </a>
+                <a href="#crops" class="menu-item" onclick="switchPage('crops', event)">
+                    <span class="icon">◆</span> Crop Analysis
+                </a>
+                <a href="#trends" class="menu-item" onclick="switchPage('trends', event)">
+                    <span class="icon">◆</span> Trends
+                </a>
+                <a href="#orders" class="menu-item" onclick="switchPage('orders', event)">
+                    <span class="icon">◆</span> Orders
+                </a>
+                <a href="#settings" class="menu-item" onclick="switchPage('settings', event)">
+                    <span class="icon">◆</span> Settings
+                </a>
+            </nav>
+        </div>
+
+        <div class="dashboard-main">
+            <!-- Header -->
+            <div class="dashboard-header">
+                <div>
+                    <h2>Farm Management Dashboard</h2>
+                    <p>Real-time farming analytics and performance tracking</p>
+                </div>
+                <div class="header-actions">
+                    <button class="btn-icon" title="Refresh">⟳</button>
+                    <button class="btn-icon" title="Export">↓</button>
+                </div>
+            </div>
+
+            <!-- Filter Section -->
+            <div class="filters-section">
+                <div class="filter-group">
+                    <label>Period</label>
+                    <select class="filter-select">
+                        <option>This Month</option>
+                        <option>Last Month</option>
+                        <option>Last Quarter</option>
+                        <option>Year to Date</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label>Crop Type</label>
+                    <select class="filter-select">
+                        <option>All Crops</option>
+                        <option>Maize</option>
+                        <option>Tomatoes</option>
+                        <option>Leafy Greens</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label>Growth System</label>
+                    <select class="filter-select">
+                        <option>All Systems</option>
+                        <option>Hydroponic</option>
+                        <option>Traditional</option>
+                        <option>Aquaponic</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label>Quality Grade</label>
+                    <select class="filter-select">
+                        <option>All Grades</option>
+                        <option>Premium</option>
+                        <option>Standard</option>
+                        <option>Grade B</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- PAGE: OVERVIEW -->
+            <div id="page-overview" class="dashboard-page active">
+                <!-- KPI Cards -->
+                <div class="kpi-grid">
+                    <div class="kpi-card">
+                        <div class="kpi-top">
+                            <span class="kpi-icon">$</span>
+                            <div class="kpi-trend up">↑ 12%</div>
+                        </div>
+                        <div class="kpi-label">Total Revenue</div>
+                        <div class="kpi-value">$4,850</div>
+                        <div class="kpi-meta">This month</div>
+                    </div>
+
+                    <div class="kpi-card">
+                        <div class="kpi-top">
+                            <span class="kpi-icon">⊡</span>
+                            <div class="kpi-trend up">↑ 8%</div>
+                        </div>
+                        <div class="kpi-label">Total Yield</div>
+                        <div class="kpi-value">2,450 kg</div>
+                        <div class="kpi-meta">Production output</div>
+                    </div>
+
+                    <div class="kpi-card">
+                        <div class="kpi-top">
+                            <span class="kpi-icon">C</span>
+                            <div class="kpi-trend down">↓ 3%</div>
+                        </div>
+                        <div class="kpi-label">Op. Costs</div>
+                        <div class="kpi-value">$1,240</div>
+                        <div class="kpi-meta">Monthly expenses</div>
+                    </div>
+
+                    <div class="kpi-card">
+                        <div class="kpi-top">
+                            <span class="kpi-icon">%</span>
+                            <div class="kpi-trend up">↑ 15%</div>
+                        </div>
+                        <div class="kpi-label">Profit Margin</div>
+                        <div class="kpi-value">74.5%</div>
+                        <div class="kpi-meta">Net profitability</div>
+                    </div>
+
+                    <div class="kpi-card">
+                        <div class="kpi-top">
+                            <span class="kpi-icon">T</span>
+                            <div class="kpi-trend">●</div>
+                        </div>
+                        <div class="kpi-label">Avg. Temperature</div>
+                        <div class="kpi-value">24°C</div>
+                        <div class="kpi-meta">Optimal range</div>
+                    </div>
+
+                    <div class="kpi-card">
+                        <div class="kpi-top">
+                            <span class="kpi-icon">#</span>
+                            <div class="kpi-trend">●</div>
+                        </div>
+                        <div class="kpi-label">Active Orders</div>
+                        <div class="kpi-value">12</div>
+                        <div class="kpi-meta">Pending fulfillment</div>
+                    </div>
+                </div>
+
+                <!-- Analysis Tabs -->
+                <div class="analysis-tabs">
+                    <div class="tab-buttons">
+                        <button class="tab-btn active" onclick="switchTab('revenue-chart', event)">Revenue by Crop</button>
+                        <button class="tab-btn" onclick="switchTab('cost-chart', event)">Cost Breakdown</button>
+                        <button class="tab-btn" onclick="switchTab('yield-chart', event)">Yield Analysis</button>
+                        <button class="tab-btn" onclick="switchTab('performance', event)">Performance Summary</button>
+                    </div>
+
+                    <!-- Revenue Chart -->
+                    <div id="revenue-chart" class="chart-container active">
+                        <h3 class="chart-title">Revenue Distribution by Crop Type</h3>
+                        <div class="chart-grid">
+                            <div class="chart-item">
+                                <div class="chart-bar">
+                                    <div class="bar-fill" style="height: 85%; background: linear-gradient(135deg, #1d7c3a, #2ecc71);"></div>
+                                </div>
+                                <div class="chart-label">Maize</div>
+                                <div class="chart-value">$2,100 (43%)</div>
+                            </div>
+                            <div class="chart-item">
+                                <div class="chart-bar">
+                                    <div class="bar-fill" style="height: 65%; background: linear-gradient(135deg, #f39c12, #f1c40f);"></div>
+                                </div>
+                                <div class="chart-label">Tomatoes</div>
+                                <div class="chart-value">$1,350 (28%)</div>
+                            </div>
+                            <div class="chart-item">
+                                <div class="chart-bar">
+                                    <div class="bar-fill" style="height: 45%; background: linear-gradient(135deg, #3498db, #2ecc71);"></div>
+                                </div>
+                                <div class="chart-label">Greens</div>
+                                <div class="chart-value">$850 (17%)</div>
+                            </div>
+                            <div class="chart-item">
+                                <div class="chart-bar">
+                                    <div class="bar-fill" style="height: 35%; background: linear-gradient(135deg, #e74c3c, #c0392b);"></div>
+                                </div>
+                                <div class="chart-label">Chillies</div>
+                                <div class="chart-value">$550 (12%)</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Cost Chart -->
+                    <div id="cost-chart" class="chart-container">
+                        <h3 class="chart-title">Operational Costs by Category</h3>
+                        <div class="chart-grid">
+                            <div class="chart-item">
+                                <div class="chart-bar">
+                                    <div class="bar-fill" style="height: 70%; background: linear-gradient(135deg, #9b59b6, #8e44ad);"></div>
+                                </div>
+                                <div class="chart-label">Seeds/Water</div>
+                                <div class="chart-value">$520 (42%)</div>
+                            </div>
+                            <div class="chart-item">
+                                <div class="chart-bar">
+                                    <div class="bar-fill" style="height: 55%; background: linear-gradient(135deg, #34495e, #2c3e50);"></div>
+                                </div>
+                                <div class="chart-label">Labor</div>
+                                <div class="chart-value">$380 (31%)</div>
+                            </div>
+                            <div class="chart-item">
+                                <div class="chart-bar">
+                                    <div class="bar-fill" style="height: 40%; background: linear-gradient(135deg, #16a085, #1abc9c);"></div>
+                                </div>
+                                <div class="chart-label">Equipment</div>
+                                <div class="chart-value">$240 (19%)</div>
+                            </div>
+                            <div class="chart-item">
+                                <div class="chart-bar">
+                                    <div class="bar-fill" style="height: 20%; background: linear-gradient(135deg, #e67e22, #d35400);"></div>
+                                </div>
+                                <div class="chart-label">Other</div>
+                                <div class="chart-value">$100 (8%)</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Yield Chart -->
+                    <div id="yield-chart" class="chart-container">
+                        <h3 class="chart-title">Yield Production by Crop</h3>
+                        <div class="chart-grid">
+                            <div class="chart-item">
+                                <div class="chart-bar">
+                                    <div class="bar-fill" style="height: 90%; background: linear-gradient(135deg, #1d7c3a, #2ecc71);"></div>
+                                </div>
+                                <div class="chart-label">Maize</div>
+                                <div class="chart-value">1,200 kg</div>
+                            </div>
+                            <div class="chart-item">
+                                <div class="chart-bar">
+                                    <div class="bar-fill" style="height: 60%; background: linear-gradient(135deg, #f39c12, #f1c40f);"></div>
+                                </div>
+                                <div class="chart-label">Tomatoes</div>
+                                <div class="chart-value">800 kg</div>
+                            </div>
+                            <div class="chart-item">
+                                <div class="chart-bar">
+                                    <div class="bar-fill" style="height: 50%; background: linear-gradient(135deg, #3498db, #2ecc71);"></div>
+                                </div>
+                                <div class="chart-label">Greens</div>
+                                <div class="chart-value">320 kg</div>
+                            </div>
+                            <div class="chart-item">
+                                <div class="chart-bar">
+                                    <div class="bar-fill" style="height: 35%; background: linear-gradient(135deg, #e74c3c, #c0392b);"></div>
+                                </div>
+                                <div class="chart-label">Chillies</div>
+                                <div class="chart-value">130 kg</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Performance -->
+                    <div id="performance" class="chart-container">
+                        <h3 class="chart-title">Crop Performance Summary</h3>
+                        <div class="performance-table">
+                            <div class="perf-row header">
+                                <div class="perf-col col-crop">Crop</div>
+                                <div class="perf-col">Yield (kg)</div>
+                                <div class="perf-col">Revenue</div>
+                                <div class="perf-col">Profit %</div>
+                                <div class="perf-col">Status</div>
+                            </div>
+                            <div class="perf-row">
+                                <div class="perf-col col-crop">Maize</div>
+                                <div class="perf-col">1,200 kg</div>
+                                <div class="perf-col">$2,100</div>
+                                <div class="perf-col">78%</div>
+                                <div class="perf-col"><span class="badge success">Excellent</span></div>
+                            </div>
+                            <div class="perf-row">
+                                <div class="perf-col col-crop">Tomatoes</div>
+                                <div class="perf-col">800 kg</div>
+                                <div class="perf-col">$1,350</div>
+                                <div class="perf-col">72%</div>
+                                <div class="perf-col"><span class="badge success">Good</span></div>
+                            </div>
+                            <div class="perf-row">
+                                <div class="perf-col col-crop">Leafy Greens</div>
+                                <div class="perf-col">320 kg</div>
+                                <div class="perf-col">$850</div>
+                                <div class="perf-col">68%</div>
+                                <div class="perf-col"><span class="badge warning">Fair</span></div>
+                            </div>
+                            <div class="perf-row">
+                                <div class="perf-col col-crop">Chillies</div>
+                                <div class="perf-col">130 kg</div>
+                                <div class="perf-col">$550</div>
+                                <div class="perf-col">65%</div>
+                                <div class="perf-col"><span class="badge info">Monitor</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Action Section -->
+                <div class="action-section">
+                    <button class="btn-primary" onclick="openModal('new-crop')">+ Add New Crop</button>
+                    <button class="btn-secondary" onclick="openModal('place-order')">Place Order</button>
+                    <button class="btn-outline" onclick="downloadReport()">Download Report</button>
+                </div>
+            </div>
+
+            <!-- PAGE: CROP ANALYSIS -->
+            <div id="page-crops" class="dashboard-page">
+                <h3 class="section-title">Crop Type Analysis</h3>
+                <div class="analysis-grid">
+                    <div class="analysis-card">
+                        <h4>Top Performing Crop</h4>
+                        <div class="card-icon">#</div>
+                        <div class="card-stat">Maize</div>
+                        <div class="card-desc">$2,100 revenue | 78% margin</div>
+                        <button class="btn-small" onclick="viewCropDetails('maize')">View Details</button>
+                    </div>
+                    <div class="analysis-card">
+                        <h4>Highest Yield</h4>
+                        <div class="card-icon">$</div>
+                        <div class="card-stat">Maize</div>
+                        <div class="card-desc">1,200 kg produced | Growing</div>
+                        <button class="btn-small" onclick="viewCropDetails('maize')">View Details</button>
+                    </div>
+                    <div class="analysis-card">
+                        <h4>Newest Crop</h4>
+                        <div class="card-icon">+</div>
+                        <div class="card-stat">Chillies</div>
+                        <div class="card-desc">30 days old | Promising</div>
+                        <button class="btn-small" onclick="viewCropDetails('chillies')">View Details</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PAGE: TRENDS -->
+            <div id="page-trends" class="dashboard-page">
+                <h3 class="section-title">Monthly Trends & Performance</h3>
+                <div class="trends-container">
+                    <div class="trend-card">
+                        <h4>Revenue Trend (Last 6 Months)</h4>
+                        <div class="mini-chart">
+                            <div class="trend-bar" style="height: 40%;"></div>
+                            <div class="trend-bar" style="height: 55%;"></div>
+                            <div class="trend-bar" style="height: 65%;"></div>
+                            <div class="trend-bar" style="height: 72%;"></div>
+                            <div class="trend-bar" style="height: 85%;"></div>
+                            <div class="trend-bar" style="height: 95%;"></div>
+                        </div>
+                        <div class="trend-labels">
+                            <span>Sep</span><span>Oct</span><span>Nov</span><span>Dec</span><span>Jan</span><span>Feb</span>
+                        </div>
+                    </div>
+                    <div class="trend-card">
+                        <h4>Profit Margin Trend</h4>
+                        <div class="mini-chart">
+                            <div class="trend-bar" style="height: 60%; background: #f39c12;"></div>
+                            <div class="trend-bar" style="height: 65%; background: #f39c12;"></div>
+                            <div class="trend-bar" style="height: 68%; background: #f39c12;"></div>
+                            <div class="trend-bar" style="height: 72%; background: #f39c12;"></div>
+                            <div class="trend-bar" style="height: 75%; background: #f39c12;"></div>
+                            <div class="trend-bar" style="height: 74.5%; background: #f39c12;"></div>
+                        </div>
+                        <div class="trend-labels">
+                            <span>Sep</span><span>Oct</span><span>Nov</span><span>Dec</span><span>Jan</span><span>Feb</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PAGE: ORDERS -->
+            <div id="page-orders" class="dashboard-page">
+                <h3 class="section-title">Recent Orders</h3>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Order ID</th>
+                            <th>Product</th>
+                            <th>Quantity</th>
+                            <th>Amount</th>
+                            <th>Date</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>#ORD-2401</td>
+                            <td>Fresh Maize</td>
+                            <td>150 kg</td>
+                            <td>$450</td>
+                            <td>Apr 14, 2026</td>
+                            <td><span class="badge success">Delivered</span></td>
+                        </tr>
+                        <tr>
+                            <td>#ORD-2402</td>
+                            <td>Tomatoes</td>
+                            <td>80 kg</td>
+                            <td>$320</td>
+                            <td>Apr 13, 2026</td>
+                            <td><span class="badge success">Delivered</span></td>
+                        </tr>
+                        <tr>
+                            <td>#ORD-2403</td>
+                            <td>Leafy Greens</td>
+                            <td>50 bags</td>
+                            <td>$200</td>
+                            <td>Apr 12, 2026</td>
+                            <td><span class="badge warning">Processing</span></td>
+                        </tr>
+                        <tr>
+                            <td>#ORD-2404</td>
+                            <td>Mixed Vegetables</td>
+                            <td>120 kg</td>
+                            <td>$480</td>
+                            <td>Apr 10, 2026</td>
+                            <td><span class="badge success">Delivered</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- PAGE: SETTINGS -->
+            <div id="page-settings" class="dashboard-page">
+                <h3 class="section-title">Account Settings</h3>
+                <div class="settings-form">
+                    <div class="setting-item">
+                        <label>Farm Name</label>
+                        <input type="text" value="Mutua's Organic Farm" class="input-field">
+                    </div>
+                    <div class="setting-item">
+                        <label>Location</label>
+                        <input type="text" value="Nairobi, Kenya" class="input-field">
+                    </div>
+                    <div class="setting-item">
+                        <label>Phone Number</label>
+                        <input type="tel" value="+254 712 345 678" class="input-field">
+                    </div>
+                    <button class="btn-primary">💾 Save Changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modals -->
+    <div id="modal-new-crop" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Add New Crop</h3>
+                <button class="modal-close" onclick="closeModal('new-crop')">✕</button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label>Crop Name</label>
+                        <input type="text" placeholder="e.g., Tomatoes" class="input-field">
+                    </div>
+                    <div class="form-group">
+                        <label>Amount (kg)</label>
+                        <input type="number" placeholder="100" class="input-field">
+                    </div>
+                    <div class="form-group">
+                        <label>Growth System</label>
+                        <select class="input-field">
+                            <option>Hydroponic</option>
+                            <option>Traditional</option>
+                            <option>Aquaponic</option>
+                        </select>
+                    </div>
+                    <button type="button" class="btn-primary" onclick="closeModal('new-crop')">Add Crop</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-place-order" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Place New Order</h3>
+                <button class="modal-close" onclick="closeModal('place-order')">✕</button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label>Product</label>
+                        <select class="input-field">
+                            <option>Maize</option>
+                            <option>Tomatoes</option>
+                            <option>Leafy Greens</option>
+                            <option>Chillies</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Quantity (kg)</label>
+                        <input type="number" placeholder="50" class="input-field">
+                    </div>
+                    <div class="form-group">
+                        <label>Price per kg</label>
+                        <input type="number" placeholder="5.50" class="input-field">
+                    </div>
+                    <button type="button" class="btn-primary" onclick="closeModal('place-order')">Create Order</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <p>&copy; 2026 The Torch Initiative - FarmDialogue. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="../assets/js/script.js"></script>
+    <script>
+        function switchPage(pageId, e) {
+            e.preventDefault();
+            document.querySelectorAll('.dashboard-page').forEach(p => p.classList.remove('active'));
+            document.querySelectorAll('.menu-item').forEach(m => m.classList.remove('active'));
+            
+            const page = document.getElementById('page-' + pageId);
+            if (page) page.classList.add('active');
+            e.target.closest('.menu-item').classList.add('active');
+        }
+
+        function switchTab(tabId, e) {
+            e.preventDefault();
+            document.querySelectorAll('.chart-container').forEach(c => c.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            
+            const chart = document.getElementById(tabId);
+            if (chart) chart.classList.add('active');
+            e.target.classList.add('active');
+        }
+
+        function openModal(modalId) {
+            const modal = document.getElementById('modal-' + modalId);
+            if (modal) modal.classList.add('active');
+        }
+
+        function closeModal(modalId) {
+            const modal = document.getElementById('modal-' + modalId);
+            if (modal) modal.classList.remove('active');
+        }
+
+        function downloadReport() {
+            alert('📥 Farm Report downloaded successfully!');
+        }
+
+        function viewCropDetails(crop) {
+            alert(`📊 Viewing detailed analytics for ${crop.charAt(0).toUpperCase() + crop.slice(1)}`);
+        }
+
+        // Close modal when clicking outside
+        document.querySelectorAll('.modal-overlay').forEach(modal => {
+            modal.addEventListener('click', function(e) {
+                if (e.target === this) this.classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>

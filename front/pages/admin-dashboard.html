@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - The Torch</title>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="stylesheet" href="../assets/css/dashboard.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="navbar-logo">
+                <img src="../assets/images/logo.png" alt="The Torch Logo" style="height: 50px; width: 50px; border-radius: 50%; margin-right: 0.75rem; display: inline-block; vertical-align: middle; object-fit: cover;">
+                <h1 style="display: inline-block; margin: 0;">The Torch</h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="../index.html" class="nav-link">Home</a></li>
+                <li><a href="admin-dashboard.html" class="nav-link active">Admin Panel</a></li>
+                <li><a href="contact.html" class="nav-link">Support</a></li>
+                <li><a href="#" class="btn-login">Log Out</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Dashboard Container -->
+    <div class="dashboard-container">
+        <div class="dashboard-sidebar">
+            <div class="sidebar-header">
+                <img src="../assets/images/team/1.jpg" alt="Admin Avatar" class="sidebar-avatar">
+                <div class="sidebar-info">
+                    <h3>Admin Panel</h3>
+                    <p>System Administrator</p>
+                </div>
+            </div>
+            <nav class="sidebar-menu">
+                <a href="#" class="menu-item active">
+                    <span class="icon">◆</span> Dashboard
+                </a>
+                <a href="#" class="menu-item">
+                    <span class="icon">◆</span> Users
+                </a>
+                <a href="#" class="menu-item">
+                    <span class="icon">◆</span> Transactions
+                </a>
+                <a href="#" class="menu-item">
+                    <span class="icon">◆</span> Orders
+                </a>
+                <a href="#" class="menu-item">
+                    <span class="icon">◆</span> Reports
+                </a>
+                <a href="#" class="menu-item">
+                    <span class="icon">◆</span> Settings
+                </a>
+            </nav>
+        </div>
+
+        <div class="dashboard-main">
+            <!-- Header -->
+            <div class="dashboard-header">
+                <div>
+                    <h2>System Overview</h2>
+                    <p>Manage all platform activities and users</p>
+                </div>
+                <div class="header-actions">
+                    <button class="btn-icon" title="Notifications">◉</button>
+                    <button class="btn-icon" title="Settings">⧙</button>
+                </div>
+            </div>
+
+            <!-- Quick Stats -->
+            <div class="stats-grid">
+                <div class="stat-card primary">
+                    <div class="stat-header">
+                        <span class="stat-icon">◈</span>
+                        <h3>Total Users</h3>
+                    </div>
+                    <div class="stat-value">1,247</div>
+                    <div class="stat-detail">+32 this week</div>
+                </div>
+                <div class="stat-card success">
+                    <div class="stat-header">
+                        <span class="stat-icon">$</span>
+                        <h3>Total Revenue</h3>
+                    </div>
+                    <div class="stat-value">$45,820</div>
+                    <div class="stat-detail">+12% month-over-month</div>
+                </div>
+                <div class="stat-card warning">
+                    <div class="stat-header">
+                        <span class="stat-icon">⊞</span>
+                        <h3>Active Orders</h3>
+                    </div>
+                    <div class="stat-value">384</div>
+                    <div class="stat-detail">28 pending review</div>
+                </div>
+                <div class="stat-card info">
+                    <div class="stat-header">
+                        <span class="stat-icon">✦</span>
+                        <h3>Platform Rating</h3>
+                    </div>
+                    <div class="stat-value">4.7</div>
+                    <div class="stat-detail">Based on 2,450 reviews</div>
+                </div>
+            </div>
+
+            <!-- Main Content Grid -->
+            <div class="content-grid">
+                <!-- User Statistics -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3>User Breakdown</h3>
+                        <a href="#" class="link-btn">Manage Users →</a>
+                    </div>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>User Type</th>
+                                <th>Count</th>
+                                <th>Active</th>
+                                <th>Growth</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Farmers</strong></td>
+                                <td>245</td>
+                                <td>89%</td>
+                                <td><span class="badge success">+8%</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Customers</strong></td>
+                                <td>521</td>
+                                <td>76%</td>
+                                <td><span class="badge success">+12%</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Vendors</strong></td>
+                                <td>87</td>
+                                <td>94%</td>
+                                <td><span class="badge success">+3%</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Enthusiasts</strong></td>
+                                <td>394</td>
+                                <td>62%</td>
+                                <td><span class="badge success">+15%</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- System Health -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3>System Health</h3>
+                    </div>
+                    <div class="health-item">
+                        <div class="health-label">
+                            <strong>Server Status</strong>
+                            <span class="badge success">Online</span>
+                        </div>
+                        <div class="health-bar">
+                            <div class="health-fill" style="width: 98%;"></div>
+                        </div>
+                    </div>
+                    <div class="health-item">
+                        <div class="health-label">
+                            <strong>Database Performance</strong>
+                            <span class="badge success">Optimal</span>
+                        </div>
+                        <div class="health-bar">
+                            <div class="health-fill" style="width: 95%;"></div>
+                        </div>
+                    </div>
+                    <div class="health-item">
+                        <div class="health-label">
+                            <strong>API Response</strong>
+                            <span class="badge success">Fast</span>
+                        </div>
+                        <div class="health-bar">
+                            <div class="health-fill" style="width: 93%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Section -->
+            <div class="content-grid">
+                <!-- Recent Activity -->
+                <div class="card wide">
+                    <div class="card-header">
+                        <h3>Recent Activity</h3>
+                    </div>
+                    <div class="activity-log">
+                        <div class="activity-item">
+                            <span class="activity-time">2 mins ago</span>
+                            <strong>New Order Created</strong>
+                            <p>Customer ordered 50kg maize from Green Valley Farm</p>
+                        </div>
+                        <div class="activity-item">
+                            <span class="activity-time">15 mins ago</span>
+                            <strong>New User Registration</strong>
+                            <p>Farmer "Ahmed Hassan" registered on platform</p>
+                        </div>
+                        <div class="activity-item">
+                            <span class="activity-time">1 hour ago</span>
+                            <strong>Payment Processed</strong>
+                            <p>Transaction #PAY-2450 completed successfully</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Admin Actions -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Admin Actions</h3>
+                    </div>
+                    <div class="action-buttons">
+                        <button class="btn-action">Manage Users</button>
+                        <button class="btn-action">View Reports</button>
+                        <button class="btn-action">System Settings</button>
+                        <button class="btn-action">Send Announcement</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../assets/js/script.js"></script>
+</body>
+</html>

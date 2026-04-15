@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - The Torch</title>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .role-selector {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .role-selector h2 {
+            color: white;
+            font-size: 36px;
+            margin-bottom: 16px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .role-selector p {
+            color: rgba(255,255,255,0.9);
+            font-size: 18px;
+            margin-bottom: 50px;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+        }
+
+        .roles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .role-card {
+            background: white;
+            border-radius: 12px;
+            padding: 40px 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            border: 2px solid transparent;
+        }
+
+        .role-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.25);
+            border-color: #2ecc71;
+        }
+
+        .role-icon {
+            font-size: 60px;
+            margin-bottom: 20px;
+        }
+
+        .role-card h3 {
+            font-size: 24px;
+            color: #2c3e50;
+            margin: 0 0 12px 0;
+        }
+
+        .role-card p {
+            color: #7f8c8d;
+            font-size: 14px;
+            line-height: 1.6;
+            margin: 0 0 20px 0;
+        }
+
+        .role-card button {
+            background-color: #2ecc71;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .role-card button:hover {
+            background-color: #27ae60;
+            transform: scale(1.02);
+        }
+
+        .admin-section {
+            margin-top: 50px;
+            text-align: center;
+        }
+
+        .admin-section h4 {
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 20px;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .admin-card {
+            background: rgba(255,255,255,0.1);
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 12px;
+            padding: 40px 30px;
+            max-width: 280px;
+            margin: 0 auto;
+            transition: all 0.3s ease;
+        }
+
+        .admin-card:hover {
+            background: rgba(255,255,255,0.15);
+            border-color: rgba(255,255,255,0.5);
+            transform: translateY(-8px);
+        }
+
+        .admin-card .role-icon {
+            font-size: 50px;
+        }
+
+        .admin-card h3 {
+            color: white;
+            font-size: 20px;
+            margin: 0 0 12px 0;
+        }
+
+        .admin-card p {
+            color: rgba(255,255,255,0.9);
+            font-size: 13px;
+        }
+
+        .admin-card button {
+            background-color: white;
+            color: #667eea;
+            border: none;
+            padding: 10px 24px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 12px;
+            width: 100%;
+        }
+
+        .admin-card button:hover {
+            background-color: #f0f0f0;
+        }
+
+        @media (max-width: 768px) {
+            .role-selector h2 {
+                font-size: 28px;
+            }
+
+            .role-selector p {
+                font-size: 16px;
+            }
+
+            .roles-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .role-card {
+                padding: 30px 20px;
+            }
+
+            .role-icon {
+                font-size: 50px;
+            }
+
+            .role-card h3 {
+                font-size: 20px;
+            }
+
+            .role-card p {
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="navbar-logo">
+                <h1>The Torch</h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="../index.html" class="nav-link">Home</a></li>
+                <li><a href="dashboard-roles.html" class="nav-link active">Dashboard</a></li>
+                <li><a href="contact.html" class="nav-link">Support</a></li>
+                <li><a href="login.html" class="btn-login">Sign In</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Role Selector -->
+    <div class="role-selector">
+        <h2>Welcome to The Torch</h2>
+        <p>Select your role to access your personalized dashboard</p>
+
+        <div class="roles-grid">
+            <!-- Farmer Dashboard -->
+            <div class="role-card">
+                <div class="role-icon">F</div>
+                <h3>Farmer</h3>
+                <p>Manage your crops, track harvests, and sell your produce directly to customers and vendors.</p>
+                <button onclick="window.location.href='farmer-dashboard.html'">Access Dashboard</button>
+            </div>
+
+            <!-- Customer Dashboard -->
+            <div class="role-card">
+                <div class="role-icon">C</div>
+                <h3>Customer</h3>
+                <p>Browse fresh, local produce, place orders, and support local farmers in your community.</p>
+                <button onclick="window.location.href='customer-dashboard.html'">Access Dashboard</button>
+            </div>
+
+            <!-- Equipment Vendor Dashboard -->
+            <div class="role-card">
+                <div class="role-icon">V</div>
+                <h3>Equipment Vendor</h3>
+                <p>Supply quality farming equipment to farmers and track inventory and orders efficiently.</p>
+                <button onclick="window.location.href='vendor-dashboard.html'">Access Dashboard</button>
+            </div>
+
+            <!-- Gardening Enthusiast Dashboard -->
+            <div class="role-card">
+                <div class="role-icon">E</div>
+                <h3>Gardening Enthusiast</h3>
+                <p>Learn gardening skills, connect with community members, and grow your own vegetables at home.</p>
+                <button onclick="window.location.href='enthusiast-dashboard.html'">Access Dashboard</button>
+            </div>
+        </div>
+
+        <!-- Admin Section -->
+        <div class="admin-section">
+            <h4>System Administration</h4>
+            <div class="admin-card">
+                <div class="role-icon">A</div>
+                <h3>Admin Panel</h3>
+                <p>Manage all platform activities, users, and system operations.</p>
+                <button onclick="window.location.href='admin-dashboard.html'">Admin Dashboard</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../assets/js/script.js"></script>
+</body>
+</html>

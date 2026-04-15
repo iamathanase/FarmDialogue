@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Dashboard - The Torch</title>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="stylesheet" href="../assets/css/dashboard.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="navbar-logo">
+                <img src="../assets/images/logo.png" alt="The Torch Logo" style="height: 50px; width: 50px; border-radius: 50%; margin-right: 0.75rem; display: inline-block; vertical-align: middle; object-fit: cover;">
+                <h1 style="display: inline-block; margin: 0;">The Torch</h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="../index.html" class="nav-link">Home</a></li>
+                <li><a href="customer-dashboard.html" class="nav-link active">Customer Dashboard</a></li>
+                <li><a href="contact.html" class="nav-link">Support</a></li>
+                <li><a href="#" class="btn-login">Log Out</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Dashboard Container -->
+    <div class="dashboard-container">
+        <div class="dashboard-sidebar">
+            <div class="sidebar-header">
+                <img src="../assets/images/team/3.jpg" alt="Customer Avatar" class="sidebar-avatar">
+                <div class="sidebar-info">
+                    <h3>Sarah Anderson</h3>
+                    <p>Customer</p>
+                </div>
+            </div>
+            <nav class="sidebar-menu">
+                <a href="#" class="menu-item active">
+                    <span class="icon">◆</span> Shopping
+                </a>
+                <a href="#" class="menu-item">
+                    <span class="icon">◆</span> My Orders
+                </a>
+                <a href="#" class="menu-item">
+                    <span class="icon">◆</span> Favorites
+                </a>
+                <a href="#" class="menu-item">
+                    <span class="icon">◆</span> Payments
+                </a>
+                <a href="#" class="menu-item">
+                    <span class="icon">◆</span> Addresses
+                </a>
+                <a href="#" class="menu-item">
+                    <span class="icon">◆</span> Settings
+                </a>
+            </nav>
+        </div>
+
+        <div class="dashboard-main">
+            <!-- Header -->
+            <div class="dashboard-header">
+                <div>
+                    <h2>Welcome, Sarah</h2>
+                    <p>Browse fresh, local produce from farms near you</p>
+                </div>
+                <div class="header-actions">
+                    <button class="btn-icon" title="Notifications">◉</button>
+                    <button class="btn-icon" title="Cart">⊞</button>
+                </div>
+            </div>
+
+            <!-- Quick Stats -->
+            <div class="stats-grid">
+                <div class="stat-card primary">
+                    <div class="stat-header">
+                        <span class="stat-icon">⊞</span>
+                        <h3>Active Orders</h3>
+                    </div>
+                    <div class="stat-value">3</div>
+                    <div class="stat-detail">1 arriving today</div>
+                </div>
+                <div class="stat-card success">
+                    <div class="stat-header">
+                        <span class="stat-icon">$</span>
+                        <h3>Total Spent</h3>
+                    </div>
+                    <div class="stat-value">$485</div>
+                    <div class="stat-detail">12 orders lifetime</div>
+                </div>
+                <div class="stat-card warning">
+                    <div class="stat-header">
+                        <span class="stat-icon">✦</span>
+                        <h3>Loyalty Points</h3>
+                    </div>
+                    <div class="stat-value">850</div>
+                    <div class="stat-detail">Redeem for rewards</div>
+                </div>
+                <div class="stat-card info">
+                    <div class="stat-header">
+                        <span class="stat-icon">◈</span>
+                        <h3>Member Since</h3>
+                    </div>
+                    <div class="stat-value">Feb 2024</div>
+                    <div class="stat-detail">VIP Member</div>
+                </div>
+            </div>
+
+            <!-- Main Content Grid -->
+            <div class="content-grid">
+                <!-- Active Orders -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3>My Active Orders</h3>
+                        <a href="#" class="link-btn">View All →</a>
+                    </div>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Order ID</th>
+                                <th>Farmer</th>
+                                <th>Items</th>
+                                <th>Delivery</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>#ORD-2405</strong></td>
+                                <td>John's Farm</td>
+                                <td>Fresh Maize (50kg)</td>
+                                <td><span class="badge success">Today</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>#ORD-2404</strong></td>
+                                <td>Green Valley</td>
+                                <td>Tomatoes (20kg)</td>
+                                <td><span class="badge warning">Tomorrow</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>#ORD-2403</strong></td>
+                                <td>Organic Farms</td>
+                                <td>Mixed Vegetables (30kg)</td>
+                                <td><span class="badge info">16 Apr</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Favorite Farmers -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Favorite Farmers</h3>
+                        <a href="#" class="link-btn">Browse More →</a>
+                    </div>
+                    <div class="farmer-list">
+                        <div class="farmer-item">
+                            <img src="../assets/images/team/4.jpg" alt="Farmer">
+                            <div>
+                                <h4>John Mutua's Farm</h4>
+                                <p>5 km away • ⭐ 4.8/5</p>
+                            </div>
+                            <button class="btn-small">Order</button>
+                        </div>
+                        <div class="farmer-item">
+                            <img src="../assets/images/team/1.jpg" alt="Farmer">
+                            <div>
+                                <h4>Green Valley Produce</h4>
+                                <p>8 km away • ⭐ 4.6/5</p>
+                            </div>
+                            <button class="btn-small">Order</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Section -->
+            <div class="content-grid">
+                <!-- Recent Reviews -->
+                <div class="card wide">
+                    <div class="card-header">
+                        <h3>Recent Reviews</h3>
+                    </div>
+                    <div class="review-item">
+                        <div class="review-header">
+                            <strong>John's Fresh Maize</strong>
+                            <span class="stars">⭐⭐⭐⭐⭐</span>
+                        </div>
+                        <p>"Excellent quality! Delivered fresh and on time. Will order again!"</p>
+                    </div>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Quick Actions</h3>
+                    </div>
+                    <div class="action-buttons">
+                        <button class="btn-action">Browse Produce</button>
+                        <button class="btn-action">Search Farmers</button>
+                        <button class="btn-action">Message Farmer</button>
+                        <button class="btn-action">Get Support</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../assets/js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Equipment Vendor Dashboard - The Torch</title>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="stylesheet" href="../assets/css/dashboard.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="navbar-logo">
+                <img src="../assets/images/logo.png" alt="The Torch Logo" style="height: 50px; width: 50px; border-radius: 50%; margin-right: 0.75rem; display: inline-block; vertical-align: middle; object-fit: cover;">
+                <h1 style="display: inline-block; margin: 0;">The Torch</h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="../index.html" class="nav-link">Home</a></li>
+                <li><a href="vendor-dashboard.html" class="nav-link active">Vendor Dashboard</a></li>
+                <li><a href="contact.html" class="nav-link">Support</a></li>
+                <li><a href="#" class="btn-login">Log Out</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Dashboard Container -->
+    <div class="dashboard-container">
+        <div class="dashboard-sidebar">
+            <div class="sidebar-header">
+                <img src="../assets/images/team/2.jpg" alt="Vendor Avatar" class="sidebar-avatar">
+                <div class="sidebar-info">
+                    <h3>AgraTech Supplies</h3>
+                    <p>Equipment Vendor</p>
+                </div>
+            </div>
+            <nav class="sidebar-menu">
+                <a href="#" class="menu-item active">
+                    <span class="icon">◆</span> Overview
+                </a>
+                <a href="#" class="menu-item">
+                    <span class="icon">◆</span> Equipment
+                </a>
+                <a href="#" class="menu-item">
+                    <span class="icon">◆</span> Orders
+                </a>
+                <a href="#" class="menu-item">
+                    <span class="icon">◆</span> Revenue
+                </a>
+                <a href="#" class="menu-item">
+                    <span class="icon">◆</span> Customers
+                </a>
+                <a href="#" class="menu-item">
+                    <span class="icon">◆</span> Settings
+                </a>
+            </nav>
+        </div>
+
+        <div class="dashboard-main">
+            <!-- Header -->
+            <div class="dashboard-header">
+                <div>
+                    <h2>Welcome back, AgraTech</h2>
+                    <p>Supply quality farming equipment to your customers</p>
+                </div>
+                <div class="header-actions">
+                    <button class="btn-icon" title="Notifications">◉</button>
+                    <button class="btn-icon" title="Settings">⧙</button>
+                </div>
+            </div>
+
+            <!-- Quick Stats -->
+            <div class="stats-grid">
+                <div class="stat-card primary">
+                    <div class="stat-header">
+                        <span class="stat-icon">⚙</span>
+                        <h3>Equipment Items</h3>
+                    </div>
+                    <div class="stat-value">47</div>
+                    <div class="stat-detail">23 in stock</div>
+                </div>
+                <div class="stat-card success">
+                    <div class="stat-header">
+                        <span class="stat-icon">⊞</span>
+                        <h3>Active Orders</h3>
+                    </div>
+                    <div class="stat-value">12</div>
+                    <div class="stat-detail">5 pending shipment</div>
+                </div>
+                <div class="stat-card warning">
+                    <div class="stat-header">
+                        <span class="stat-icon">$</span>
+                        <h3>Revenue (Month)</h3>
+                    </div>
+                    <div class="stat-value">$3,850</div>
+                    <div class="stat-detail">+15% from last month</div>
+                </div>
+                <div class="stat-card info">
+                    <div class="stat-header">
+                        <span class="stat-icon">◈</span>
+                        <h3>Regular Customers</h3>
+                    </div>
+                    <div class="stat-value">28</div>
+                    <div class="stat-detail">+5 this month</div>
+                </div>
+            </div>
+
+            <!-- Main Content Grid -->
+            <div class="content-grid">
+                <!-- Inventory Status -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Equipment Inventory</h3>
+                        <a href="#" class="link-btn">Manage →</a>
+                    </div>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Equipment</th>
+                                <th>Stock</th>
+                                <th>Price</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Solar Water Pump</strong></td>
+                                <td>8</td>
+                                <td>$450</td>
+                                <td><span class="badge warning">Low Stock</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Drip Irrigation Kit</strong></td>
+                                <td>15</td>
+                                <td>$120</td>
+                                <td><span class="badge success">In Stock</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Soil Moisture Sensor</strong></td>
+                                <td>0</td>
+                                <td>$35</td>
+                                <td><span class="badge danger">Out of Stock</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Recent Orders -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Recent Orders</h3>
+                        <a href="#" class="link-btn">See All →</a>
+                    </div>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Order ID</th>
+                                <th>Customer</th>
+                                <th>Amount</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>#VEND-542</td>
+                                <td>John's Farm</td>
+                                <td>$650</td>
+                                <td><span class="badge warning">Shipped</span></td>
+                            </tr>
+                            <tr>
+                                <td>#VEND-541</td>
+                                <td>Green Valley</td>
+                                <td>$450</td>
+                                <td><span class="badge success">Delivered</span></td>
+                            </tr>
+                            <tr>
+                                <td>#VEND-540</td>
+                                <td>Farm Fresh Co</td>
+                                <td>$920</td>
+                                <td><span class="badge success">Delivered</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Bottom Section -->
+            <div class="content-grid">
+                <!-- Sales Chart -->
+                <div class="card wide">
+                    <div class="card-header">
+                        <h3>Monthly Sales Trend</h3>
+                    </div>
+                    <div class="chart-placeholder">
+                        <p>Sales Chart (Jan: $2,200 → Feb: $2,800 → Mar: $3,300 → Apr: $3,850)</p>
+                    </div>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Quick Actions</h3>
+                    </div>
+                    <div class="action-buttons">
+                        <button class=\"btn-action\">Add Equipment</button>
+                        <button class=\"btn-action\">Process Orders</button>
+                        <button class=\"btn-action\">Send Promotion</button>
+                        <button class=\"btn-action\">Get Support</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../assets/js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gardening Enthusiast Dashboard - The Torch</title>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="stylesheet" href="../assets/css/dashboard.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="navbar-logo">
+                <img src="../assets/images/logo.png" alt="The Torch Logo" style="height: 50px; width: 50px; border-radius: 50%; margin-right: 0.75rem; display: inline-block; vertical-align: middle; object-fit: cover;">
+                <h1 style="display: inline-block; margin: 0;">The Torch</h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="../index.html" class="nav-link">Home</a></li>
+                <li><a href="enthusiast-dashboard.html" class="nav-link active">Enthusiast Dashboard</a></li>
+                <li><a href="contact.html" class="nav-link">Support</a></li>
+                <li><a href="#" class="btn-login">Log Out</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Dashboard Container -->
+    <div class="dashboard-container">
+        <div class="dashboard-sidebar">
+            <div class="sidebar-header">
+                <img src="../assets/images/team/3.jpg" alt="Enthusiast Avatar" class="sidebar-avatar">
+                <div class="sidebar-info">
+                    <h3>Emma Green</h3>
+                    <p>Gardening Enthusiast</p>
+                </div>
+            </div>
+            <nav class="sidebar-menu">
+                <a href="#" class="menu-item active">
+                    <span class="icon">◆</span> My Garden
+                </a>
+                <a href="#" class="menu-item">
+                    <span class="icon">◆</span> Learning
+                </a>
+                <a href="#" class="menu-item">
+                    <span class="icon">◆</span> Community
+                </a>
+                <a href="#" class="menu-item">
+                    <span class="icon">◆</span> Goals
+                </a>
+                <a href="#" class="menu-item">
+                    <span class="icon">◆</span> Forum
+                </a>
+                <a href="#" class="menu-item">
+                    <span class="icon">◆</span> Settings
+                </a>
+            </nav>
+        </div>
+
+        <div class="dashboard-main">
+            <!-- Header -->
+            <div class="dashboard-header">
+                <div>
+                    <h2>Welcome to Your Garden, Emma</h2>
+                    <p>Track your plants and learn gardening tips from experts</p>
+                </div>
+                <div class="header-actions">
+                    <button class="btn-icon" title="Notifications">◉</button>
+                    <button class="btn-icon" title="Weather">○</button>
+                </div>
+            </div>
+
+            <!-- Quick Stats -->
+            <div class="stats-grid">
+                <div class="stat-card primary">
+                    <div class="stat-header">
+                        <span class="stat-icon">#</span>
+                        <h3>Plants Growing</h3>
+                    </div>
+                    <div class="stat-value">12</div>
+                    <div class="stat-detail">All healthy</div>
+                </div>
+                <div class="stat-card success">
+                    <div class="stat-header">
+                        <span class="stat-icon">✓</span>
+                        <h3>Achievements</h3>
+                    </div>
+                    <div class="stat-value">8</div>
+                    <div class="stat-detail">"Master Gardener" badge</div>
+                </div>
+                <div class="stat-card warning">
+                    <div class="stat-header">
+                        <span class="stat-icon">▭</span>
+                        <h3>Courses Done</h3>
+                    </div>
+                    <div class="stat-value">5</div>
+                    <div class="stat-detail">3 in progress</div>
+                </div>
+                <div class="stat-card info">
+                    <div class="stat-header">
+                        <span class="stat-icon">◇</span>
+                        <h3>Connections</h3>
+                    </div>
+                    <div class="stat-value">127</div>
+                    <div class="stat-detail">Active community member</div>
+                </div>
+            </div>
+
+            <!-- Main Content Grid -->
+            <div class="content-grid">
+                <!-- My Plants -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3>My Plants</h3>
+                        <a href="#" class="link-btn">Add Plant →</a>
+                    </div>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Plant</th>
+                                <th>Planted</th>
+                                <th>Health</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Tomato Plant</strong></td>
+                                <td>15 days ago</td>
+                                <td><span class="badge success">Thriving</span></td>
+                                <td><a href="#">View</a></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Cucumber</strong></td>
+                                <td>22 days ago</td>
+                                <td><span class="badge success">Thriving</span></td>
+                                <td><a href="#">View</a></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Bell Pepper</strong></td>
+                                <td>8 days ago</td>
+                                <td><span class="badge warning">Needs Water</span></td>
+                                <td><a href="#">View</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Learning Paths -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Learning Paths</h3>
+                        <a href="#" class="link-btn">Browse All →</a>
+                    </div>
+                    <div class="course-list">
+                        <div class="course-item">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 75%;"></div>
+                            </div>
+                            <h4>Organic Gardening 101</h4>
+                            <p>75% complete • Next lesson in 2 days</p>
+                        </div>
+                        <div class="course-item">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 40%;"></div>
+                            </div>
+                            <h4>Composting Mastery</h4>
+                            <p>40% complete • 8 lessons left</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Section -->
+            <div class="content-grid">
+                <!-- Community Feed -->
+                <div class="card wide">
+                    <div class="card-header">
+                        <h3>Community Highlights</h3>
+                    </div>
+                    <div class="feed-item">
+                        <div class="feed-header">
+                            <strong>🌟 Featured Post by Expert Farmer</strong>
+                            <span>2 hours ago</span>
+                        </div>
+                        <p>"Best tips for growing organic tomatoes in small spaces..."</p>
+                    </div>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Quick Actions</h3>
+                    </div>
+                    <div class="action-buttons">
+                        <button class="btn-action">📖 Start Course</button>
+                        <button class="btn-action">🤝 Join Discussion</button>
+                        <button class="btn-action">🌍 Explore Garden Ideas</button>
+                        <button class="btn-action">Consult Expert</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../assets/js/script.js"></script>
+</body>
+</html>
