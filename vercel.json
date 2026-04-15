@@ -12,13 +12,6 @@
       "dest": "api/index.js"
     },
     {
-      "src": "/(.*\\.(?:js|css|json|png|jpg|jpeg|gif|svg|ico|webp|woff|woff2))",
-      "dest": "/front/$1",
-      "headers": {
-        "cache-control": "public, max-age=3600"
-      }
-    },
-    {
       "src": "/assets/(.*)",
       "dest": "/front/assets/$1"
     },
@@ -27,7 +20,7 @@
       "dest": "/front/pages/$1"
     },
     {
-      "src": "/(.*\\.html)",
+      "src": "/(.*\\.(?:html|js|css|json|png|jpg|jpeg|gif|svg|webp|woff|woff2|ico))",
       "dest": "/front/$1"
     },
     {
@@ -38,10 +31,7 @@
       "src": "/(.*)",
       "dest": "/front/index.html"
     }
-  ],
-  "env": {
-    "NODE_ENV": "production"
-  }
+  ]
 }
 
 
