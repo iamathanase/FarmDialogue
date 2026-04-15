@@ -45,19 +45,19 @@
                     <form id="contactForm" onsubmit="handleContactForm(event)" style="display: flex; flex-direction: column; gap: 1rem;">
                         <div>
                             <label style="display: block; margin-bottom: 0.5rem; color: var(--text-dark); font-weight: 600;">Full Name</label>
-                            <input type="text" placeholder="Your Name" required style="width: 100%; padding: 0.75rem; border: 1px solid #e0e0e0; border-radius: 8px; font-size: 1rem;">
+                            <input id="contactName" type="text" placeholder="Your Name" required style="width: 100%; padding: 0.75rem; border: 1px solid #e0e0e0; border-radius: 8px; font-size: 1rem;">
                         </div>
                         <div>
                             <label style="display: block; margin-bottom: 0.5rem; color: var(--text-dark); font-weight: 600;">Email Address</label>
-                            <input type="email" placeholder="your@email.com" required style="width: 100%; padding: 0.75rem; border: 1px solid #e0e0e0; border-radius: 8px; font-size: 1rem;">
+                            <input id="contactEmail" type="email" placeholder="your@email.com" required style="width: 100%; padding: 0.75rem; border: 1px solid #e0e0e0; border-radius: 8px; font-size: 1rem;">
                         </div>
                         <div>
                             <label style="display: block; margin-bottom: 0.5rem; color: var(--text-dark); font-weight: 600;">Phone Number</label>
-                            <input type="tel" placeholder="+233 (0) 123 456 789" style="width: 100%; padding: 0.75rem; border: 1px solid #e0e0e0; border-radius: 8px; font-size: 1rem;">
+                            <input id="contactPhone" type="tel" placeholder="+233 (0) 123 456 789" style="width: 100%; padding: 0.75rem; border: 1px solid #e0e0e0; border-radius: 8px; font-size: 1rem;">
                         </div>
                         <div>
                             <label style="display: block; margin-bottom: 0.5rem; color: var(--text-dark); font-weight: 600;">Subject</label>
-                            <select required style="width: 100%; padding: 0.75rem; border: 1px solid #e0e0e0; border-radius: 8px; font-size: 1rem;">
+                            <select id="contactSubject" required style="width: 100%; padding: 0.75rem; border: 1px solid #e0e0e0; border-radius: 8px; font-size: 1rem;">
                                 <option value="">Select Subject</option>
                                 <option value="general">General Inquiry</option>
                                 <option value="support">Customer Support</option>
@@ -68,7 +68,7 @@
                         </div>
                         <div>
                             <label style="display: block; margin-bottom: 0.5rem; color: var(--text-dark); font-weight: 600;">Message</label>
-                            <textarea placeholder="Your message here..." required rows="5" style="width: 100%; padding: 0.75rem; border: 1px solid #e0e0e0; border-radius: 8px; font-size: 1rem; font-family: inherit; resize: vertical;"></textarea>
+                            <textarea id="contactMessage" placeholder="Your message here..." required rows="5" style="width: 100%; padding: 0.75rem; border: 1px solid #e0e0e0; border-radius: 8px; font-size: 1rem; font-family: inherit; resize: vertical;"></textarea>
                         </div>
                         <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
                     </form>

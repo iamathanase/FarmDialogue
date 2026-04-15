@@ -276,7 +276,7 @@ function logout() {
 
 // API call helper function
 async function apiCall(endpoint, method = 'GET', data = null) {
-    const baseURL = 'http://localhost/farmdialogue/back/api/';
+    const baseURL = 'http://localhost:5000/api/';
     const token = localStorage.getItem('authToken');
     
     const options = {
@@ -319,7 +319,7 @@ async function handleLogin(event) {
     submitButton.disabled = true;
     
     try {
-        const response = await fetch('http://localhost/farmdialogue/back/api/auth/login', {
+        const response = await fetch('http://localhost:5000/api/auth/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -330,10 +330,11 @@ async function handleLogin(event) {
         const data = await response.json();
         
         if (response.ok) {
-            // Store auth data
-            localStorage.setItem('authToken', data.token);
-            localStorage.setItem('userRole', data.userRole);
-            localStorage.setItem('userId', data.userId);
+            // Store auth data (backend returns data nested in data.data)
+            const authData = data.data || data;
+            localStorage.setItem('authToken', authData.token);
+            localStorage.setItem('userRole', authData.userRole);
+            localStorage.setItem('userId', authData.userId);
             
             if (rememberMe) {
                 localStorage.setItem('rememberEmail', email);
@@ -361,6 +362,12 @@ async function handleLogin(event) {
 async function handleContactForm(event) {
     event.preventDefault();
 
+    const name = document.getElementById('contactName').value.trim();
+    const email = document.getElementById('contactEmail').value.trim();
+    const phone = document.getElementById('contactPhone').value.trim();
+    const subject = document.getElementById('contactSubject').value;
+    const message = document.getElementById('contactMessage').value.trim();
+
     const submitButton = event.target.querySelector('button[type="submit"]');
     const originalText = submitButton ? submitButton.textContent : '';
     if (submitButton) {
@@ -369,8 +376,28 @@ async function handleContactForm(event) {
     }
 
     try {
-        showToast('Message sent successfully. We will get back to you soon.', 'success', { duration: 2600, title: 'Message Sent' });
-        event.target.reset();
+        const response = await fetch('http://localhost:5000/api/contact', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                name,
+                email,
+                phone,
+                subject,
+                message
+            })
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+            showToast(data.data.message || 'Message sent successfully. We will get back to you soon.', 'success', { duration: 2600, title: 'Message Sent' });
+            event.target.reset();
+        } else {
+            showToast(data.message || 'Failed to send message. Please try again.', 'error');
+        }
     } catch (error) {
         console.error('Contact form error:', error);
         showToast('Unable to send your message right now. Please try again.', 'error');
@@ -497,5 +524,13 @@ function initializeProductFilter() {
 
 // Initialize product filter when DOM is ready
 document.addEventListener('DOMContentLoaded', initializeProductFilter);
+
+// Initialize contact form
+document.addEventListener('DOMContentLoaded', function() {
+    const contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+        contactForm.addEventListener('submit', handleContactForm);
+    }
+});
 
 console.log('FarmDialogue Frontend Scripts Loaded');

@@ -7,3 +7,16 @@ node_modules
 .env.local
 .env.*.local
 *.log
+
+# Ignore frontend folder
+front/
+front-backup/
+
+# Ignore spec files
+.kiro/
+
+# Ignore test files
+back/test-api.js
+back/seed-admin.js
+test-integration.md
+DASHBOARDS.md
